@@ -13,6 +13,8 @@
           dense
           filled
           use-chips
+          emit-value
+          map-options
           :use-input="!atributo"
           :options="filteredAtributos"
           @update:model-value="handleStats"
@@ -32,6 +34,8 @@
           dense
           filled
           use-chips
+          emit-value
+          map-options
           :use-input="!habilidade"
           :options="filteredHabilidades"
           @update:model-value="handleStats"
@@ -86,19 +90,26 @@
         />
       </q-card>
     </div>
-    <q-card class="rouse-card">
-      <RouseCheck />
-    </q-card>
+    <div class="q-mr-auto q-my-auto flex-column q-ml-md">
+      <q-btn
+        v-show="!importedData"
+        outline
+        class="q-mx-auto q-mb-md"
+        @click="importUserJson"
+      >
+        Importar dados
+      </q-btn>
+      <q-card class="rouse-card q-mx-auto">
+        <RouseCheck />
+      </q-card>
+    </div>
   </div>
 </template>
 
 <script>
 import { computed, defineComponent, ref } from 'vue'
 import { useUserStore } from '../store/user'
-
 import { atributos, habilidades } from '@/utils/constantes'
-
-
 import DiceRoller from '@/components/DiceRoller.vue'
 import RouseCheck from '@/components/RouseCheck.vue'
 
@@ -127,6 +138,33 @@ export default defineComponent({
       return userStore.userData
     })
 
+    const importedData = computed(() => {
+      return userStore.imported
+    })
+
+    const importUserJson = () => {
+      const input = document.createElement('input')
+      input.type = 'file'
+      input.accept = '.json'
+      input.onchange = async (event) => {
+        const file = event.target.files[0]
+        if (file) {
+          const reader = new FileReader()
+          reader.onload = (e) => {
+            try {
+              const data = JSON.parse(e.target.result)
+              userStore.setUserData(data)
+              userStore.imported = true
+            } catch (error) {
+              console.error('Error parsing JSON:', error)
+            }
+          }
+          reader.readAsText(file)
+        }
+      }
+      input.click()
+    }
+
     const filterHabilidade = (val, update) => {
       update(() => {
         filteredHabilidades.value = habilidades.filter(hab =>
@@ -144,12 +182,11 @@ export default defineComponent({
     }
 
     const handleStats = () => {
-      console.log('handleStats')
-      if (userData.attributes) {
-        const att = userData.attributes[atributo.value] || 0
-        const hab = userData.abilities[habilidade.value] || 0
+      if (userData.value?.attributes) {
+        const att = userData.value.attributes[atributo.value] || 0
+        const hab = userData.value.abilities[habilidade.value] || 0
+
         const sum = att + hab
-        
         dies.value = sum > 0 ? sum : 1
       } else {
         dies.value = 1
@@ -158,6 +195,7 @@ export default defineComponent({
 
     return {
       userData,
+      importedData,
       atributos,
       habilidades,
       dies,
@@ -165,6 +203,7 @@ export default defineComponent({
       difficulty,
       atributo,
       habilidade,
+      importUserJson,
       filteredAtributos,
       filteredHabilidades,
       filterAtributo,
@@ -174,6 +213,7 @@ export default defineComponent({
   }
 })
 </script>
+
 
 <style lang="sass" scoped>
 .roll-card
@@ -188,10 +228,6 @@ export default defineComponent({
 .rouse-card
   height: 200px
   width: 200px
-  margin-top: auto
-  margin-bottom: auto
-  margin-right: auto
-  margin-left: 20px
 
 .stats-card
   height: 90px
