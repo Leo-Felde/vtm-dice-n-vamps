@@ -24,6 +24,12 @@
           | Crítico bagunçado
         </h6>
         <h6
+          v-show="cleanCrit"
+          class="q-ml-md q-my-auto"
+        >
+          | Crítico
+        </h6>
+        <h6
           v-show="bestFail"
           class="text-accent q-ml-md q-my-auto"
         >
@@ -36,7 +42,7 @@
         class="q-ml-md q-mt-md q-mb-sm"
         :class="{'text-accent' : messyCrit || (successes < difficulty && bestFail)}"
       >
-        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
+        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : cleanCrit ? 'Crítico' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
       </h5>
       <div
         class="d-flex"
@@ -120,6 +126,7 @@ export default{
 
     const successes = ref(null)
     const messyCrit = ref(false)
+    const cleanCrit = ref(false)
     const bestFail = ref(false)
 
     const rollDice = () => {
@@ -154,6 +161,9 @@ export default{
 
       if (regularCrits + hungerCrits >= 2) {
         messyCrit.value = hungerCrits > 0
+        cleanCrit.value = !messyCrit.value 
+      } else {
+        cleanCrit.value = false
       }
 
       if (successes.value <= 3) {
@@ -219,6 +229,7 @@ export default{
       reRollPoll,
       successes,
       messyCrit,
+      cleanCrit,
       bestFail,
       rollDice,
       toggleReroll,

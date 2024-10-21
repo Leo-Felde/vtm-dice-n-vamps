@@ -62,6 +62,7 @@
             class="q-mx-sm"
             label="Fome"
             type="number"
+            color="accent"
             min="1"
             stack-label
             filled
@@ -75,6 +76,7 @@
             label="Dificuldade"
             type="number"
             min="1"
+            color="yellow"
             stack-label
             filled
             dense
