@@ -3,19 +3,29 @@
     <section class="q-my-auto text-center">
       Olá, bem vindo ao [PLACEHOLDER], aqui você pode importar seus dados ou criar um novo vampiro & fazer rolagens de forma fácil e intuitiva.
       <div>
-      <q-btn>
-        Criar personagem
-      </q-btn>
-      <q-btn>
-        Importar personagem
-      </q-btn>
-      <q-btn>
-        Fazer rolagem simples
-      </q-btn>
-    </div>
-
+        <q-btn
+          flat
+          to="/criar"
+        >
+          Criar personagem
+        </q-btn>
+        <q-btn flat>
+          Importar personagem
+        </q-btn>
+        <q-btn
+          flat
+          to="/rolar"
+        >
+          Fazer rolagem simples
+        </q-btn>
+      </div>
     </section>
-    <img alt="logo Vampiro a máscara" src="../assets/logo.png" id="vtm-logo" class="q-mx-auto">
+    <img
+      id="vtm-logo"
+      alt="logo Vampiro a máscara"
+      src="../assets/logo.png"
+      class="q-mx-auto"
+    >
   </div>
 </template>
 

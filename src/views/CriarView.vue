@@ -1,8 +1,8 @@
 <template>
   <div>
     <q-stepper
-      v-model="currentStep"
       ref="stepper"
+      v-model="currentStep"
       color="primary"
       header-nav
       animated
@@ -14,13 +14,26 @@
         :title="step.title"
         :done="currentStep > step.name"
       >
-      <div class="q-pa-md">
-        step {{ index }}
-      </div>
+        <div class="q-pa-md">
+          step {{ index }}
+        </div>
 
         <div>
-          <q-btn @click="move('back')" v-show="currentStep > 1" color="secondary" class="q-mr-sm"> Voltar </q-btn>
-          <q-btn @click="move('foward')" v-show="currentStep < 10" color="primary"> Continuar </q-btn>
+          <q-btn
+            v-show="currentStep > 1"
+            color="secondary"
+            class="q-mr-sm"
+            @click="move('back')"
+          >
+            Voltar
+          </q-btn>
+          <q-btn
+            v-show="currentStep < 10"
+            color="primary"
+            @click="move('foward')"
+          >
+            {{ currentStep === 9 ? 'finalizar' : 'Continuar' }}
+          </q-btn>
         </div>
       </q-step>
     </q-stepper>
@@ -39,8 +52,8 @@ export default {
     const currentStep = ref(1)
 
     const steps = ref([
-      { name: 1, title: 'Nome' },
-      { name: 2, title: 'Clã' },
+      { name: 1, title: 'Clã' },
+      { name: 2, title: 'Nome' },
       { name: 3, title: 'Geração' },
       { name: 4, title: 'Tipo de predador' },
       { name: 5, title: 'Atributos' },
