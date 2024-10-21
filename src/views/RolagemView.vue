@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex-column q-mx-auto page-view"
+    class="d-flex q-mx-auto page-view"
   >
-    <q-card class="flex-column q-mx-auto roll-card q-my-auto">
+    <q-card class="flex-column roll-card">
       <div class="d-flex q-mx-auto q-mb-md">
         <q-input
           v-model.number="dies"
@@ -48,6 +48,9 @@
         :difficulty="difficulty"
       />
     </q-card>
+    <q-card class="rouse-card">
+      <RouseCheck />
+    </q-card>
   </div>
 </template>
 
@@ -55,12 +58,14 @@
 import { defineComponent, ref } from 'vue'
 
 import DiceRoller from '@/components/DiceRoller.vue'
+import RouseCheck from '@/components/RouseCheck.vue'
 
 export default defineComponent({
   name: 'RolagemView',
 
   components: {
-    DiceRoller
+    DiceRoller,
+    RouseCheck
   },
 
   setup () {
@@ -85,4 +90,16 @@ export default defineComponent({
   min-height: 322px
   height: fit-content
   padding: 15px
+  margin-left: auto
+  margin-top: auto
+  margin-bottom: auto
+
+.rouse-card
+  height: 200px
+  width: 200px
+  margin-top: auto
+  margin-bottom: auto
+  margin-right: auto
+  margin-left: 20px
+
 </style>
