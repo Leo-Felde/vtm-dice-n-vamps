@@ -18,7 +18,7 @@
           >
           <img
             v-show="currentRoll === 'hunger'"
-            :src="require('../assets/img/dice/red-fail.png')"
+            :src="require('../assets/img/dice/red-bestial-fail.png')"
             class="q-ma-auto result"
           >
         </span>

@@ -2,7 +2,6 @@
   <div class="d-flex q-mx-auto page-view">
     <div class="q-ml-auto q-my-auto">
       <q-card
-        v-show="!!userData"
         class="stats-card d-flex"
       >
         <q-select
@@ -16,6 +15,7 @@
           use-chips
           :use-input="!atributo"
           :options="filteredAtributos"
+          @update:model-value="handleStats"
           @filter="filterAtributo"
         />
         <q-icon
@@ -34,6 +34,7 @@
           use-chips
           :use-input="!habilidade"
           :options="filteredHabilidades"
+          @update:model-value="handleStats"
           @filter="filterHabilidade"
         />
       </q-card>
@@ -92,7 +93,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useUserStore } from '../store/user'
 
 import { atributos, habilidades } from '@/utils/constantes'
@@ -122,6 +123,10 @@ export default defineComponent({
     const filteredAtributos = ref(atributos)
     const filteredHabilidades = ref(habilidades)
 
+    const userData = computed(() => {
+      return userStore.userData
+    })
+
     const filterHabilidade = (val, update) => {
       update(() => {
         filteredHabilidades.value = habilidades.filter(hab =>
@@ -138,8 +143,21 @@ export default defineComponent({
       })
     }
 
+    const handleStats = () => {
+      console.log('handleStats')
+      if (userData.attributes) {
+        const att = userData.attributes[atributo.value] || 0
+        const hab = userData.abilities[habilidade.value] || 0
+        const sum = att + hab
+        
+        dies.value = sum > 0 ? sum : 1
+      } else {
+        dies.value = 1
+      }
+    }
+
     return {
-      userData: userStore.userData,
+      userData,
       atributos,
       habilidades,
       dies,
@@ -150,7 +168,8 @@ export default defineComponent({
       filteredAtributos,
       filteredHabilidades,
       filterAtributo,
-      filterHabilidade
+      filterHabilidade,
+      handleStats
     }
   }
 })

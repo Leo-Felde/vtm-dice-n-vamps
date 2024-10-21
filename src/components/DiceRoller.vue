@@ -67,6 +67,7 @@
         v-show="rolled && !reRolling"
         outline
         class="q-mr-auto"
+        :disable="diceResults.length < 1"
         @click="reRolling = true"
       >
         gastar Força de vontade
