@@ -37,5 +37,6 @@ export const habilidades = [
   { label: 'Ocultismo', value: 'ocultismo' },
   { label: 'Percepção', value: 'percepcao' },
   { label: 'Política', value: 'politica' },
-  { label: 'Tecnologia', value: 'tecnologia' }
+  { label: 'Tecnologia', value: 'tecnologia' },
+  { label: 'Força de vontade', value: 'forca_de_vontade' }
 ]

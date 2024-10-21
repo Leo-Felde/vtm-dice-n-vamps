@@ -1,5 +1,12 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h5>Feito pelo Leo</h5>
+    <h5>Dúvidas, elogios, sugestões e reclamações podem ser feitas via e-mail</h5>
+    <q-btn
+      outline
+      to="/"
+    >
+      Voltar ao app
+    </q-btn>
   </div>
 </template>
