@@ -6,7 +6,7 @@ import '@quasar/extras/material-icons-sharp/material-icons-sharp.css'
 
 export default {
   config: {
-    dark: true // Enable dark mode as default
+    dark: true 
   },
   plugins: {
   },

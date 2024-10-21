@@ -1,53 +1,90 @@
 <template>
-  <div
-    class="d-flex q-mx-auto page-view"
-  >
-    <q-card class="flex-column roll-card">
-      <div class="d-flex q-mx-auto q-mb-md">
-        <q-input
-          v-model.number="dies"
-          class="q-mx-sm"
-          label="Dados"
-          type="number"
-          min="1"
-          stack-label
-          filled
+  <div class="d-flex q-mx-auto page-view">
+    <div class="q-ml-auto q-my-auto">
+      <q-card
+        v-show="!!userData"
+        class="stats-card d-flex"
+      >
+        <q-select
+          v-model="atributo"
+          label="Atributo"
+          input-debounce="0"
+          class="q-my-auto q-mx-xs"
+          color="positive"
           dense
-          style="max-width: 120px"
-        />
-
-        <q-input
-          v-model.number="hunger"
-          class="q-mx-sm"
-          label="Fome"
-          type="number"
-          min="1"
-          stack-label
           filled
-          dense
-          style="max-width: 120px"
+          use-chips
+          :use-input="!atributo"
+          :options="filteredAtributos"
+          @filter="filterAtributo"
         />
-
-        <q-input
-          v-model.number="difficulty"
-          class="q-mx-sm"
-          label="Dificuldade"
-          type="number"
-          min="1"
-          stack-label
+        <q-icon
+          name="s_add"
+          class="q-my-auto"
+          size="large"
+        />
+        <q-select
+          v-model="habilidade"
+          label="Habilidade"
+          input-debounce="0"
+          class="q-my-auto q-mx-xs"
+          color="accent"
+          dense
           filled
-          dense
-          style="max-width: 120px"
+          use-chips
+          :use-input="!habilidade"
+          :options="filteredHabilidades"
+          @filter="filterHabilidade"
         />
-      </div>
+      </q-card>
 
-      <DiceRoller
-        class="q-mx-auto"
-        :dies="dies"
-        :hunger="hunger"
-        :difficulty="difficulty"
-      />
-    </q-card>
+      <q-card class="flex-column roll-card">
+        <div class="d-flex q-mx-auto q-mb-md">
+          <q-input
+            v-model.number="dies"
+            class="q-mx-sm"
+            label="Dados"
+            type="number"
+            min="1"
+            stack-label
+            filled
+            dense
+            style="max-width: 120px"
+          />
+
+          <q-input
+            v-model.number="hunger"
+            class="q-mx-sm"
+            label="Fome"
+            type="number"
+            min="1"
+            stack-label
+            filled
+            dense
+            style="max-width: 120px"
+          />
+
+          <q-input
+            v-model.number="difficulty"
+            class="q-mx-sm"
+            label="Dificuldade"
+            type="number"
+            min="1"
+            stack-label
+            filled
+            dense
+            style="max-width: 120px"
+          />
+        </div>
+
+        <DiceRoller
+          class="q-mx-auto"
+          :dies="dies"
+          :hunger="hunger"
+          :difficulty="difficulty"
+        />
+      </q-card>
+    </div>
     <q-card class="rouse-card">
       <RouseCheck />
     </q-card>
@@ -56,6 +93,10 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import { useUserStore } from '../store/user'
+
+import { atributos, habilidades } from '@/utils/constantes'
+
 
 import DiceRoller from '@/components/DiceRoller.vue'
 import RouseCheck from '@/components/RouseCheck.vue'
@@ -68,20 +109,51 @@ export default defineComponent({
     RouseCheck
   },
 
-  setup () {
+  setup() {
+    const userStore = useUserStore()
+
     const dies = ref(1)
     const hunger = ref(1)
     const difficulty = ref(null)
 
+    const atributo = ref(null)
+    const habilidade = ref(null)
+
+    const filteredAtributos = ref(atributos)
+    const filteredHabilidades = ref(habilidades)
+
+    const filterHabilidade = (val, update) => {
+      update(() => {
+        filteredHabilidades.value = habilidades.filter(hab =>
+          hab.label.toLowerCase().includes(val.toLowerCase())
+        )
+      })
+    }
+
+    const filterAtributo = (val, update) => {
+      update(() => {
+        filteredAtributos.value = atributos.filter(atr =>
+          atr.label.toLowerCase().includes(val.toLowerCase())
+        )
+      })
+    }
 
     return {
+      userData: userStore.userData,
+      atributos,
+      habilidades,
       dies,
       hunger,
-      difficulty
+      difficulty,
+      atributo,
+      habilidade,
+      filteredAtributos,
+      filteredHabilidades,
+      filterAtributo,
+      filterHabilidade
     }
   }
 })
-
 </script>
 
 <style lang="sass" scoped>
@@ -101,5 +173,15 @@ export default defineComponent({
   margin-bottom: auto
   margin-right: auto
   margin-left: 20px
+
+.stats-card
+  height: 90px
+  display: flex
+  padding-left: 10px
+  padding-right: 10px
+  justify-content: space-around
+  &:deep(.q-field__control)
+    height: min-content
+    width: 250px !important
 
 </style>

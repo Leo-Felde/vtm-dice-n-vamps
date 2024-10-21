@@ -1,0 +1,41 @@
+export const atributos = [
+  { label: 'Força', value: 'forca' },
+  { label: 'Destreza', value: 'destreza' },
+  { label: 'Vigor', value: 'vigor' },
+  { label: 'Carisma', value: 'carisma' },
+  { label: 'Manipulação', value: 'manipulacao' },
+  { label: 'Autocontrole', value: 'autocontrole' },
+  { label: 'Inteligência', value: 'inteligencia' },
+  { label: 'Raciocínio', value: 'raciocinio' },
+  { label: 'Determinação', value: 'determinacao' }
+]
+
+export const habilidades = [
+  { label: 'Armas Brancas', value: 'armas_brancas' },
+  { label: 'Armas de Fogo', value: 'armas_de_fogo' },
+  { label: 'Atletismo', value: 'atletismo' },
+  { label: 'Briga', value: 'briga' },
+  { label: 'Condução', value: 'conducao' },
+  { label: 'Furtividade', value: 'furtividade' },
+  { label: 'Ladroagem', value: 'ladroagem' },
+  { label: 'Ofícios', value: 'oficios' },
+  { label: 'Sobrevivência', value: 'sobrevivencia' },
+  { label: 'Empatia com Animais', value: 'empatia_com_animais' },
+  { label: 'Etiqueta', value: 'etiqueta' },
+  { label: 'Intimidação', value: 'intimidacao' },
+  { label: 'Liderança', value: 'lideranca' },
+  { label: 'Manha', value: 'manha' },
+  { label: 'Performance', value: 'performance' },
+  { label: 'Persuasão', value: 'persuasao' },
+  { label: 'Sagacidade', value: 'sagacidade' },
+  { label: 'Subterfúgio', value: 'subterfugio' },
+  { label: 'Ciência', value: 'ciencia' },
+  { label: 'Erudição', value: 'erudicao' },
+  { label: 'Finanças', value: 'financas' },
+  { label: 'Investigação', value: 'investigacao' },
+  { label: 'Medicina', value: 'medicina' },
+  { label: 'Ocultismo', value: 'ocultismo' },
+  { label: 'Percepção', value: 'percepcao' },
+  { label: 'Política', value: 'politica' },
+  { label: 'Tecnologia', value: 'tecnologia' }
+]
