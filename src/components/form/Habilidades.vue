@@ -436,6 +436,7 @@ export default defineComponent({
     showSpecialties: Boolean
   },
   
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const form = reactive({ ...props.modelValue })
     const specialties = reactive({ ...props.especialidades })

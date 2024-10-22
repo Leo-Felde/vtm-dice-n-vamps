@@ -10,7 +10,7 @@
       {{ label }}
       <q-tooltip
         v-if="tooltip"
-        anchor="bottom middle"
+        anchor="top middle"
         self="bottom middle"
         :offset="[10, 10]"
       >

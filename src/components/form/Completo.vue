@@ -1,33 +1,39 @@
 <template>
   <q-form
+    ref="formRef"
     class="form-completo"
-    @submit="onSubmit"
   >
     <div id="character">
       <div class="row q-col-gutter-md q-mb-sm">
         <div class="col-4">
           <q-input
             v-model="form.nome"
-            label="Nome"
+            label="Nome *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-input
             v-model="form.conceito"
-            label="Conceito"
+            label="Conceito *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-select
             v-model="form.predator"
             :options="predatorTypes"
-            label="Predador"
+            label="Predador *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           >
             <template #option="scope">
               <q-item v-bind="scope.itemProps">
@@ -49,23 +55,28 @@
             label="Crônica"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-input
             v-model="form.ambicao"
-            label="Ambição"
+            label="Ambição *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-select
             v-model="form.cla"
             :options="clanOptions"
-            label="Clã"
+            label="Clã *"
             outlined
             dense
+            :rules="[rules.obrigatorio]"
           />
         </div>
       </div>
@@ -73,25 +84,31 @@
         <div class="col-4">
           <q-input
             v-model="form.sire"
-            label="Senhor"
+            label="Senhor *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-input
             v-model="form.desejo"
-            label="Desejo"
+            label="Desejo *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-input
             v-model="form.geracao"
-            label="Geração"
+            label="Geração *"
             outlined
             dense
+            lazy-rules
+            :rules="[rules.obrigatorio]"
           />
         </div>
       </div>
@@ -141,18 +158,14 @@
         show-specialties=""
       />
     </div>
-
-    <q-btn
-      label="Submit"
-      type="submit"
-      color="primary"
-    />
   </q-form>
 </template>
 
 <script>
-import { onBeforeMount, ref, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
+
 import { predatorTypes, clanOptions } from '@/utils/constantes'
+import { rules } from '../../utils/validationRules'
 
 import FormAtributos from './Atributos.vue'
 import FormHabilidades from './Habilidades.vue'
@@ -168,32 +181,37 @@ export default {
   },
 
   props: {
-    formValue: {
+    modelValue: {
       type: Object,
       required: true
     },
+    showSaveBtn: Boolean,
+    showDiscardBtn: Boolean
   },
 
   setup(props, { emit }) {
-    const form = ref({})
+    const formRef = ref(null)
 
-    onBeforeMount(() => {
-      form.value = props.formValue
-    })
+    const form = reactive({ ...props.modelValue })
 
-    watch(() => props.formValue, (newValue) => {
-      form.value = newValue
-    })
+    watch(form, (newVal) => {
+      emit('update:modelValue', newVal)
+    },
+    { deep: true })
 
-    const onSubmit = () => {
-      emit('update:formValue', form.value)
+    function validate () {
+      formRef.value.validate().then(success => {
+        return success
+      })
     }
 
     return {
+      formRef,
+      rules,
       form,
       predatorTypes,
       clanOptions,
-      onSubmit
+      validate
     }
   }
 }
