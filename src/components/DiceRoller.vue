@@ -147,14 +147,20 @@ export default{
     }
 
     const countCriticals = () => {
-      successes.value = diceResults.value.filter(result => result === 'success' || result === 'crit').length + hungerResults.value.filter(result => result === 'success' || result === 'crit').length
+      let successCount = diceResults.value.filter(result => result === 'success' || result === 'crit').length + hungerResults.value.filter(result => result === 'success' || result === 'crit').length
       
       const regularCrits = diceResults.value.filter(result => result === 'crit').length
       const hungerCrits = hungerResults.value.filter(result => result === 'crit').length
 
-      if (regularCrits + hungerCrits >= 2) {
+      const critCount = regularCrits + hungerCrits
+
+      if (critCount >= 2) {
         messyCrit.value = hungerCrits > 0
+
+        successCount = successCount + Math.floor(critCount / 2) * 2
       }
+      successes.value = successCount
+
 
       if (successes.value <= 3) {
         bestFail.value = hungerResults.value.includes('bestial-fail')
