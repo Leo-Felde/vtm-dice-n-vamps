@@ -11,7 +11,7 @@
     >
       <q-icon name="s_add" />
       <q-tooltip :delay="600">
-        salvar combinação atual
+        salvar combinação
       </q-tooltip>
     </q-card>
 

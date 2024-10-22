@@ -15,13 +15,19 @@
         class="q-ml-md q-mt-md q-mb-sm d-flex"
       >
         <h5 class="q-ma-none">
-          {{ successes }} sucessos
+          {{ `${successes} Sucesso${successes > 1 ? 's' : ''}` }}
         </h5>
         <h6
           v-show="messyCrit"
           class="text-accent q-ml-md q-my-auto"
         >
           | Crítico bagunçado
+        </h6>
+        <h6
+          v-show="!messyCrit && criticals > 0"
+          class="q-ml-md q-my-auto"
+        >
+          | {{ `${criticals} Crítico${criticals > 1 ? 's' : ''}` }}
         </h6>
         <h6
           v-show="bestFail"
@@ -117,14 +123,17 @@ export default{
     const diceResults = ref([])
     const hungerResults = ref([])
     const reRollPoll = ref([])
-
+    
     const successes = ref(null)
+    const criticals = ref([])
+
     const messyCrit = ref(false)
     const bestFail = ref(false)
 
     const rollDice = () => {
       diceResults.value = []
       hungerResults.value = []
+      criticals.value = 0
       messyCrit.value = false
       bestFail.value = false
       clearRerollPoll()
@@ -156,6 +165,7 @@ export default{
 
       if (critCount >= 2) {
         messyCrit.value = hungerCrits > 0
+        criticals.value = Math.floor(critCount / 2)
 
         successCount = successCount + Math.floor(critCount / 2) * 2
       }
@@ -224,6 +234,7 @@ export default{
       hungerResults,
       reRollPoll,
       successes,
+      criticals,
       messyCrit,
       bestFail,
       rollDice,
