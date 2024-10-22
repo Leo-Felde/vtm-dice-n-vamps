@@ -131,7 +131,7 @@ export default defineComponent({
   height: 30px
   cursor: pointer
   display: flex
-  background: black
+  background: radial-gradient(circle, rgba(37,41,48,1) 0%, rgba(17,21,29,1) 100%)
   margin-left: 4px
   margin-right: 4px
   flex: 1 0 auto

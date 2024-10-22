@@ -85,7 +85,7 @@ export default {
   align-items: center
   justify-content: center
   font-size: 2rem
-  background: radial-gradient(circle, rgba(59,59,59,1) 0%, rgba(0,0,0,1) 100%)
+  background: radial-gradient(circle, rgba(37,41,48,1) 0%, rgba(17,21,29,1) 100%)
   border: 2px solid #333
   border-radius: 10px
   margin: 20px

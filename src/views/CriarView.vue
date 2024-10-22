@@ -21,7 +21,7 @@
         <div>
           <q-btn
             v-show="currentStep > 1"
-            color="secondary"
+            flat
             class="q-mr-sm"
             @click="move('back')"
           >

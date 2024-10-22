@@ -13,7 +13,7 @@
             label="Atributo"
             input-debounce="0"
             class="q-my-auto q-mx-xs"
-            color="positive"
+            color="primary"
             dense
             filled
             use-chips
@@ -32,7 +32,7 @@
             label="Habilidade"
             input-debounce="0"
             class="q-my-auto q-mx-xs"
-            color="accent"
+            color="primary"
             dense
             filled
             use-chips
