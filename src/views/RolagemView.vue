@@ -2,44 +2,60 @@
   <div class="d-flex q-mx-auto page-view">
     <div class="q-ml-auto q-my-auto">
       <q-card
-        class="stats-card d-flex"
+        class="flex-column"
+        bordered
+        flat
+        style="border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;"
       >
-        <q-select
-          v-model="atributo"
-          label="Atributo"
-          input-debounce="0"
-          class="q-my-auto q-mx-xs"
-          color="positive"
-          dense
-          filled
-          use-chips
-          :use-input="!atributo"
-          :options="filteredAtributos"
-          @update:model-value="handleStats"
-          @filter="filterAtributo"
-        />
-        <q-icon
-          name="s_add"
-          class="q-my-auto"
-          size="large"
-        />
-        <q-select
-          v-model="habilidade"
-          label="Habilidade"
-          input-debounce="0"
-          class="q-my-auto q-mx-xs"
-          color="accent"
-          dense
-          filled
-          use-chips
-          :use-input="!habilidade"
-          :options="filteredHabilidades"
-          @update:model-value="handleStats"
-          @filter="filterHabilidade"
-        />
+        <div class="stats-wrapper">
+          <q-select
+            v-model="atributo"
+            label="Atributo"
+            input-debounce="0"
+            class="q-my-auto q-mx-xs"
+            color="positive"
+            dense
+            filled
+            use-chips
+            :use-input="!atributo"
+            :options="filteredAtributos"
+            @update:model-value="handleStats"
+            @filter="filterAtributo"
+          />
+          <q-icon
+            name="s_add"
+            class="q-my-auto"
+            size="large"
+          />
+          <q-select
+            v-model="habilidade"
+            label="Habilidade"
+            input-debounce="0"
+            class="q-my-auto q-mx-xs"
+            color="accent"
+            dense
+            filled
+            use-chips
+            :use-input="!habilidade"
+            :options="filteredHabilidades"
+            @update:model-value="handleStats"
+            @filter="filterHabilidade"
+          />
+        </div>
+        <div class="d-flex">
+          <DiceCombinationSaver
+            :combinacao-atual="[atributo, habilidade]"
+            @selecionarCominacao="selecionarCominacao"
+          />
+        </div>
       </q-card>
 
-      <q-card class="flex-column roll-card">
+      <q-card
+        class="flex-column roll-card"
+        bordered
+        flat
+        style="border-top-left-radius: 0px !important; border-top-right-radius: 0px !important;"
+      >
         <div class="d-flex q-mx-auto q-mb-md">
           <q-input
             v-model.number="dies"
@@ -86,7 +102,11 @@
         />
       </q-card>
     </div>
-    <q-card class="rouse-card">
+    <q-card
+      class="rouse-card"
+      bordered
+      flat
+    >
       <RouseCheck />
     </q-card>
   </div>
@@ -101,13 +121,15 @@ import { atributos, habilidades } from '@/utils/constantes'
 
 import DiceRoller from '@/components/DiceRoller.vue'
 import RouseCheck from '@/components/RouseCheck.vue'
+import DiceCombinationSaver from '@/components/DiceCombinationSaver.vue'
 
 export default defineComponent({
   name: 'RolagemView',
 
   components: {
     DiceRoller,
-    RouseCheck
+    RouseCheck,
+    DiceCombinationSaver
   },
 
   setup() {
@@ -144,7 +166,6 @@ export default defineComponent({
     }
 
     const handleStats = () => {
-      console.log('handleStats')
       if (userData.attributes) {
         const att = userData.attributes[atributo.value] || 0
         const hab = userData.abilities[habilidade.value] || 0
@@ -154,6 +175,11 @@ export default defineComponent({
       } else {
         dies.value = 1
       }
+    }
+
+    const selecionarCominacao = (combinacao) => {
+      atributo.value = combinacao[0]
+      habilidade.value = combinacao[1]
     }
 
     return {
@@ -169,7 +195,8 @@ export default defineComponent({
       filteredHabilidades,
       filterAtributo,
       filterHabilidade,
-      handleStats
+      handleStats,
+      selecionarCominacao
     }
   }
 })
@@ -193,8 +220,9 @@ export default defineComponent({
   margin-right: auto
   margin-left: 20px
 
-.stats-card
-  height: 90px
+.stats-wrapper
+  height: 55px
+  margin-top: 10px
   display: flex
   padding-left: 10px
   padding-right: 10px
@@ -202,5 +230,4 @@ export default defineComponent({
   &:deep(.q-field__control)
     height: min-content
     width: 250px !important
-
 </style>

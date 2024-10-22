@@ -12,6 +12,7 @@ const defaultUserData = {
   generation: '',
   vitality: 0,
   forca_de_vontade: 0,
+  savedDie: [],
   attributes: {
     forca: 0,
     destreza: 0,
@@ -93,6 +94,20 @@ export const useUserStore = defineStore('user', {
     setUserData(data) {
       this.userData = data
       localStorage.setItem('userData', JSON.stringify(data))
+    },
+
+    saveDieCobination (combination, replaceIndex = undefined) {
+      if (this.userData.savedDie.includes(combination)) return
+
+      if (replaceIndex !== undefined && replaceIndex >= 0) {
+        this.userData.savedDie.splice(replaceIndex, 1, combination)
+      } else {
+        this.userData.savedDie.push(combination)
+      }
+    },
+
+    deleteDieCombination (inedx) {
+      this.userData.savedDie.splice(inedx, 1)
     },
     
     clearUserData() {
