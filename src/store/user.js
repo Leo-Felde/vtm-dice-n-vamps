@@ -97,7 +97,7 @@ export const useUserStore = defineStore('user', {
     },
 
     saveDieCobination (combination, replaceIndex = undefined) {
-      if (this.userData.savedDie.includes(combination)) return
+      if (this.userData.savedDie.filter(die => JSON.stringify(die) === JSON.stringify(combination))[0]) return
 
       if (replaceIndex !== undefined && replaceIndex >= 0) {
         this.userData.savedDie.splice(replaceIndex, 1, combination)
