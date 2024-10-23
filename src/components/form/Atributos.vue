@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { defineComponent, watch, reactive } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import StatsCheckbox from './StatsCheckbox.vue'
 
 export default defineComponent({
@@ -78,10 +78,16 @@ export default defineComponent({
   },
   
   setup(props, { emit }) {
-    const form = reactive({ ...props.modelValue })
+    const form = ref({ ...props.modelValue })
 
     watch(form, (newVal) => {
       emit('update:modelValue', newVal)
+    }, { deep: true })
+
+    watch(() => props.modelValue, (newVal) => {
+      if (JSON.stringify(newVal) !== JSON.stringify(form.value)) {
+        form.value = { ...newVal }
+      }
     }, { deep: true })
 
     return {

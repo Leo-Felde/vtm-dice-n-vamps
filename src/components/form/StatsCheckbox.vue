@@ -58,7 +58,7 @@ export default {
       default: null
     },
     checkboxCount: {
-      type: Number,
+      type: [Number, String],
       default: 5
     },
     topLabel: {
@@ -75,8 +75,8 @@ export default {
     const checkboxes = ref([])
 
     onBeforeMount(() => {
-      for (let i = 0; i < props.checkboxCount; i++) {
-        checkboxes.value[i] = false
+      for (let i = 0; i < (parseInt(props.checkboxCount) || 5); i++) {
+        checkboxes.value[i] = props.modelValue > i
       }
     })
 

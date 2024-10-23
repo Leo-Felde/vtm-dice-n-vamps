@@ -7,7 +7,7 @@
       <div class="row q-col-gutter-md q-mb-sm">
         <div class="col-4">
           <q-input
-            v-model="form.nome"
+            v-model="form.name"
             label="Nome *"
             outlined
             dense
@@ -17,7 +17,7 @@
         </div>
         <div class="col-4">
           <q-input
-            v-model="form.conceito"
+            v-model="form.concept"
             label="Conceito *"
             outlined
             dense
@@ -33,6 +33,8 @@
             outlined
             dense
             lazy-rules
+            map-options
+            emit-value
             :rules="[rules.obrigatorio]"
           >
             <template #option="scope">
@@ -51,17 +53,16 @@
       <div class="row q-col-gutter-md q-mb-sm">
         <div class="col-4">
           <q-input
-            v-model="form.cronica"
+            v-model="form.cronicle"
             label="Crônica"
             outlined
             dense
             lazy-rules
-            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-input
-            v-model="form.ambicao"
+            v-model="form.ambition"
             label="Ambição *"
             outlined
             dense
@@ -71,7 +72,7 @@
         </div>
         <div class="col-4">
           <q-select
-            v-model="form.cla"
+            v-model="form.clan"
             :options="clanOptions"
             label="Clã *"
             outlined
@@ -93,17 +94,16 @@
         </div>
         <div class="col-4">
           <q-input
-            v-model="form.desejo"
-            label="Desejo *"
+            v-model="form.wishes"
+            label="Desejo"
             outlined
             dense
             lazy-rules
-            :rules="[rules.obrigatorio]"
           />
         </div>
         <div class="col-4">
           <q-input
-            v-model="form.geracao"
+            v-model="form.generation"
             label="Geração *"
             outlined
             dense
@@ -162,7 +162,7 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 import { predatorTypes, clanOptions } from '@/utils/constantes'
 import { rules } from '../../utils/validationRules'
@@ -192,17 +192,20 @@ export default {
   setup(props, { emit }) {
     const formRef = ref(null)
 
-    const form = reactive({ ...props.modelValue })
+    const form = ref({ ...props.modelValue })
 
     watch(form, (newVal) => {
       emit('update:modelValue', newVal)
     },
     { deep: true })
 
-    function validate () {
-      formRef.value.validate().then(success => {
-        return success
-      })
+    async function validate  () {
+      const success = await formRef.value.validate()
+      return success
+    }
+
+    function reset (toValue) {
+      Object.assign(form.value, toValue) 
     }
 
     return {
@@ -211,7 +214,8 @@ export default {
       form,
       predatorTypes,
       clanOptions,
-      validate
+      validate,
+      reset
     }
   }
 }

@@ -9,8 +9,16 @@
         ref="formulario"
         v-model="formAtual"
       />
-      <div>
+      <div class="d-flex">
         <q-btn
+          class="q-ml-auto"
+          label="Descartar Alterações"
+          flat
+          :disable="!alteracoesPendentes"
+          @click="descartarAlteracoes"
+        />
+        <q-btn
+          class="q-ml-md"
           color="primary"
           label="salvar"
           @click="salvar"
@@ -25,6 +33,7 @@ import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useUserStore } from '../store/user'
 
 import FormCompleto from '../components/form/Completo.vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'FichaCompletaView',
@@ -37,11 +46,12 @@ export default defineComponent({
   setup () {
     const formulario = ref(null)
 
+    const $q = useQuasar()
     const userStore = useUserStore()
-    const formAtual = ref({})
+    const formAtual = ref({...userStore.userData})
 
     onMounted(() => {
-      formAtual.value = { ...userData.value }
+      Object.assign(formAtual.value, userData.value) 
     })
   
     const userData = computed(() => {
@@ -54,6 +64,7 @@ export default defineComponent({
 
     const salvar = async () => {
       const valid = await formulario.value.validate()
+      console.log(valid)
 
       if (!valid) {
         setTimeout(() => {
@@ -66,14 +77,39 @@ export default defineComponent({
 
         return
       }
+      console.log('salvar')
 
       userStore.setUserData(formAtual.value)
+      $q.notify({
+        message: 'Alterações salvas com sucesso',
+        color: 'primary'
+      })
+    }
+
+    const descartarAlteracoes = () => {
+      $q.dialog({
+        title: 'Descartar alterações',
+        message: 'Descartar todas as alterações e reverter os dados?',
+        persistent: true,
+        cancel: {
+          color: 'primary',
+          label: 'Descartar',
+          flat: true,
+        },
+        ok: {
+          color: 'primary',
+          label: 'Cancelar'
+        },
+      }).onCancel(() => {
+        formulario.value.reset(userData.value)
+      })
     }
 
     return {
       formulario,
       formAtual,
       salvar,
+      descartarAlteracoes,
       alteracoesPendentes
     }
   }

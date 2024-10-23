@@ -9,7 +9,10 @@
         >
           Criar vampiro
         </q-btn>
-        <q-btn flat>
+        <q-btn
+          flat
+          @click="importarFicha"
+        >
           Importar vampiro
         </q-btn>
         <q-btn
@@ -30,10 +33,41 @@
 </template>
 
 <script>
+import { useUserStore } from '@/store/user'
+import { useQuasar } from 'quasar'
+import { useRouter } from 'vue-router'
+
 
 export default {
   name: 'HomeView',
   components: {
+
+  },
+
+  setup () {
+    const $q = useQuasar()
+    const userStore = useUserStore()
+    const router = useRouter()
+
+    const importarFicha = async () => {
+      const success = await userStore.importJson()
+
+      if (success) {
+        $q.notify({
+          message: 'Vampiro importado com sucesso!',
+          color: 'primary',
+          actions: [
+            { label: 'abrir ficha', color: 'white', handler: () => {
+              router.push('/ficha')
+            } }
+          ]
+        })
+      }
+    }
+
+    return {
+      importarFicha
+    }
   }
 }
 </script>

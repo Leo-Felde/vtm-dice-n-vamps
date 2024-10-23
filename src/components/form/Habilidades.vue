@@ -414,7 +414,7 @@
 </template>
 
 <script>
-import { defineComponent, watch, reactive } from 'vue'
+import { defineComponent, ref, watch, toRaw } from 'vue'
 import StatsCheckbox from './StatsCheckbox.vue'
 
 export default defineComponent({
@@ -436,20 +436,34 @@ export default defineComponent({
     showSpecialties: Boolean
   },
   
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'update:especialidades'],
   setup(props, { emit }) {
-    const form = reactive({ ...props.modelValue })
-    const specialties = reactive({ ...props.especialidades })
+    const form = ref({ ...props.modelValue })
+    const specialties = ref({ ...props.especialidades })
+
+    watch(() => props.modelValue, (newVal) => {
+      if (JSON.stringify(newVal) !== JSON.stringify(toRaw(form.value))) {
+        form.value = { ...newVal }
+      }
+    }, { deep: true })
+
+    watch(() => props.especialidades, (newVal) => {
+      if (JSON.stringify(newVal) !== JSON.stringify(toRaw(specialties.value))) {
+        specialties.value = { ...newVal }
+      }
+    }, { deep: true })
 
     watch(form, (newVal) => {
-      emit('update:modelValue', newVal)
-    },
-    { deep: true })
+      if (JSON.stringify(newVal) !== JSON.stringify(toRaw(props.modelValue))) {
+        emit('update:modelValue', newVal)
+      }
+    }, { deep: true })
 
     watch(specialties, (newVal) => {
-      emit('update:especialidades', newVal)
-    },
-    { deep: true })
+      if (JSON.stringify(newVal) !== JSON.stringify(toRaw(props.especialidades))) {
+        emit('update:especialidades', newVal)
+      }
+    }, { deep: true })
 
     return {
       form,
@@ -458,4 +472,5 @@ export default defineComponent({
   }
 })
 </script>
+
 
