@@ -42,7 +42,7 @@
         class="q-ml-md q-mt-md q-mb-sm"
         :class="{'text-accent' : messyCrit || (successes < difficulty && bestFail)}"
       >
-        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : cleanCrit ? 'Crítico' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
+        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : cleanCrit ? 'Sucesso Crítico' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
       </h5>
       <div
         class="d-flex"
@@ -166,6 +166,7 @@ export default{
 
       if (critCount >= 2) {
         messyCrit.value = hungerCrits > 0
+        cleanCrit.value = !messyCrit.value
         criticals.value = Math.floor(critCount / 2)
 
         successCount = successCount + Math.floor(critCount / 2) * 2

@@ -1,7 +1,7 @@
 <template>
   <q-page class="home">
     <section class="q-my-auto text-center">
-      Olá, bem vindo ao [PLACEHOLDER], aqui você pode importar seus dados ou criar um novo vampiro & fazer rolagens de forma fácil e intuitiva.
+      Olá, bem vindo ao dice-n-vamps aqui você pode importar seus dados ou criar um novo vampiro & fazer rolagens de forma fácil e intuitiva.
       <div>
         <q-btn
           flat
@@ -23,7 +23,7 @@
     <img
       id="vtm-logo"
       alt="logo Vampiro a máscara"
-      src="../assets/logo.png"
+      src="../assets/vtm-logo.png"
       class="q-mx-auto"
     >
   </q-page>
@@ -46,4 +46,7 @@ export default {
 
 #vtm-logo
   width: 50%
+  height: 25%
+  margin-top: auto
+  margin-bottom: auto
 </style>

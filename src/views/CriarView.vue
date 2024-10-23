@@ -3,9 +3,12 @@
     <q-stepper
       ref="stepper"
       v-model="currentStep"
+      class="q-mt-md q-mx-lg"
       color="primary"
       header-nav
       animated
+      flat
+      bordered
     >
       <q-step
         v-for="(step, index) in steps"

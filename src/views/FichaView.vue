@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-py-md">
+  <q-page>
     <q-card
       class="card-ficha"
       flat
@@ -86,7 +86,8 @@ export default defineComponent({
   margin-left: auto
   margin-right: auto
   padding: 20px
-  margin-bottom: 45px
+  margin-top: 20px
+  margin-bottom: 20px
 
 :deep
   #character, #attrs, #stats
