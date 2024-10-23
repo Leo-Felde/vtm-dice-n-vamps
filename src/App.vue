@@ -8,10 +8,10 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppBar from './components/layout/AppBar.vue'
-import { computed } from 'vue'
 
 const route = useRoute()
 const homePage = computed(() => route.name === 'home')

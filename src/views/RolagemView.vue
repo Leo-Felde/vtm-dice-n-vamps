@@ -2,6 +2,7 @@
   <q-page class="d-flex q-mx-auto page-view q-pb-md">
     <div class="q-ml-auto q-my-auto">
       <q-card
+        v-if="validUserData"
         class="flex-column"
         bordered
         flat
@@ -100,8 +101,16 @@
           :hunger="hunger"
           :difficulty="difficulty"
         />
+        <div
+          v-if="!validUserData"
+          id="noDataHint"
+        >
+          <q-separator />
+          <a>Importe seu vampiro</a> para utilizar seus atributos e habilidades de forma fácil
+        </div>
       </q-card>
     </div>
+
     <q-card
       class="rouse-card"
       bordered
@@ -145,9 +154,8 @@ export default defineComponent({
     const filteredAtributos = ref(atributos)
     const filteredHabilidades = ref(habilidades)
 
-    const userData = computed(() => {
-      return userStore.userData
-    })
+    const userData = computed(() => userStore.userData)
+    const validUserData = computed(() => !!userStore.userData.attributes && !!userStore.userData.abilities)
 
     const filterHabilidade = (val, update) => {
       update(() => {
@@ -191,6 +199,7 @@ export default defineComponent({
 
     return {
       userData,
+      validUserData,
       atributos,
       habilidades,
       dies,
@@ -237,4 +246,12 @@ export default defineComponent({
   &:deep(.q-field__control)
     height: min-content
     width: 250px !important
+
+#noDataHint
+  position: absolute
+  bottom: 2px
+  width: 100%
+  left: 0px
+  padding-left: 4px
+  padding-right: 4px
 </style>

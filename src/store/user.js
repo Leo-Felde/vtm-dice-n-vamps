@@ -1,9 +1,9 @@
-import { defaultUserData } from '@/utils/constantes'
+// import { defaultUserData } from '@/utils/constantes'
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    userData: JSON.parse(localStorage.getItem('userData')) || defaultUserData,
+    userData: JSON.parse(localStorage.getItem('userData')) || {},
     imported: false
   }),
 

@@ -84,9 +84,7 @@ export default defineComponent({
       Object.assign(formAtual.value, userData.value) 
     })
   
-    const userData = computed(() => {
-      return userStore.userData
-    })
+    const userData = computed(() =>  userStore.userData)
 
     const alteracoesPendentes = computed(() => {
       return JSON.stringify(userData.value) !== JSON.stringify(formAtual.value) 
@@ -141,14 +139,16 @@ export default defineComponent({
     }
 
     const baixarJSON = () => {
-      const jsonStr = JSON.stringify(obj, null, 2)
+      if (!userData.value?.name || userData.value?.attributes?.length) return
+
+      const jsonStr = JSON.stringify(userData.value, null, 2)
     
       const blob = new Blob([jsonStr], { type: 'application/json' })
       const url = URL.createObjectURL(blob)
     
       const a = document.createElement('a')
       a.href = url
-      a.download = `${fileName}.json`
+      a.download = `${userData.value.name}.json`
     
       document.body.appendChild(a)
       a.click()
