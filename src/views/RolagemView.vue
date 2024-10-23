@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex q-mx-auto page-view">
+  <q-page class="d-flex q-mx-auto page-view">
     <div class="q-ml-auto q-my-auto">
       <q-card
         class="flex-column"
@@ -109,7 +109,7 @@
     >
       <RouseCheck />
     </q-card>
-  </div>
+  </q-page>
 </template>
 
 <script>

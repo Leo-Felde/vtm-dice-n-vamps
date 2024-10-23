@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <q-page class="about">
     <h5>Feito pelo Leo</h5>
     <h5>Dúvidas, elogios, sugestões e reclamações podem ser feitas via e-mail</h5>
     <q-btn
@@ -8,5 +8,5 @@
     >
       Voltar ao app
     </q-btn>
-  </div>
+  </q-page>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <q-page>
     <q-stepper
       ref="stepper"
       v-model="currentStep"
@@ -37,7 +37,7 @@
         </div>
       </q-step>
     </q-stepper>
-  </div>
+  </q-page>
 </template>
 
 <script>

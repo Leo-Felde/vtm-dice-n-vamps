@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <q-page class="home">
     <section class="q-my-auto text-center">
       Olá, bem vindo ao [PLACEHOLDER], aqui você pode importar seus dados ou criar um novo vampiro & fazer rolagens de forma fácil e intuitiva.
       <div>
@@ -26,7 +26,7 @@
       src="../assets/logo.png"
       class="q-mx-auto"
     >
-  </div>
+  </q-page>
 </template>
 
 <script>
