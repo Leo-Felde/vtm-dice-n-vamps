@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page id="criar-page">
     <q-stepper
       ref="stepper"
       v-model="currentStep"
@@ -84,3 +84,8 @@ export default {
 }
 
 </script>
+
+<style lang="sass" scoped>
+#criar-page
+  background-image: url(https://drawdistance.dev/wp-content/uploads/2019/12/Wallpaper_03-1920x1080.jpg)
+</style>
