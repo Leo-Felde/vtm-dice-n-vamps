@@ -132,6 +132,8 @@ export default{
     const bestFail = ref(false)
 
     const rollDice = () => {
+      if (!props.dies) return
+
       diceResults.value = []
       hungerResults.value = []
       criticals.value = 0

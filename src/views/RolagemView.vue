@@ -74,7 +74,7 @@
             class="q-mx-sm"
             label="Fome"
             type="number"
-            min="1"
+            min="0"
             stack-label
             filled
             dense
@@ -152,7 +152,9 @@ export default defineComponent({
     const filterHabilidade = (val, update) => {
       update(() => {
         filteredHabilidades.value = habilidades.filter(hab =>
-          hab.label.toLowerCase().includes(val.toLowerCase())
+          val.length > 0 
+            ? hab.label.toLowerCase().includes(val.toLowerCase())
+            : !hab.hidden
         )
       })
     }
@@ -160,7 +162,9 @@ export default defineComponent({
     const filterAtributo = (val, update) => {
       update(() => {
         filteredAtributos.value = atributos.filter(atr =>
-          atr.label.toLowerCase().includes(val.toLowerCase())
+          val.length > 0 
+            ? atr.label.toLowerCase().includes(val.toLowerCase())
+            : !atr.hidden
         )
       })
     }

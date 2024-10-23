@@ -7,7 +7,8 @@ export const atributos = [
   { label: 'Autocontrole', value: 'autocontrole' },
   { label: 'Inteligência', value: 'inteligencia' },
   { label: 'Raciocínio', value: 'raciocinio' },
-  { label: 'Determinação', value: 'determinacao' }
+  { label: 'Determinação', value: 'determinacao' },
+  { label: 'Força de vontade', value: 'forca_de_vontade', hidden: true }
 ]
 
 export const habilidades = [
@@ -38,7 +39,7 @@ export const habilidades = [
   { label: 'Percepção', value: 'percepcao' },
   { label: 'Política', value: 'politica' },
   { label: 'Tecnologia', value: 'tecnologia' },
-  { label: 'Força de vontade', value: 'forca_de_vontade' }
+  { label: 'Força de vontade', value: 'forca_de_vontade', hidden: true }
 ]
 
 export const predatorTypes = [
