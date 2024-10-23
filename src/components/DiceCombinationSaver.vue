@@ -9,7 +9,7 @@
       bordered
       @click="saveCombination"
     >
-      <q-icon name="s_add" />
+      <q-icon name="sym_r_add" />
       <q-tooltip :delay="600">
         salvar combinação
       </q-tooltip>

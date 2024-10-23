@@ -23,7 +23,7 @@
             @filter="filterAtributo"
           />
           <q-icon
-            name="s_add"
+            name="sym_r_add"
             class="q-my-auto"
             size="large"
           />
