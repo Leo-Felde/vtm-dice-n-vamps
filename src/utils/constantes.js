@@ -166,3 +166,12 @@ export const clanOptions = [
   'Brujah', 'Gangrel', 'Malkavian', 'Nosferatos', 'Toreador',
   'Tremere', 'Ventrue', 'Caitiff'
 ]
+
+export const ageOptions = [
+  { label: 'XVI', value: '16', desc: 'Childer - Sangue-fraco' },
+  { label: 'XV', value: '15', desc: 'Childer - Sangue-fraco' },
+  { label: 'XIV', value: '14', desc: 'Childer - Sangue-fraco' },
+  { label: 'XIII', value: '13', desc: 'Neoniteo - Comum' },
+  { label: 'XII', value: '12', desc: 'Neonito - Comum' },
+  { label: 'XI', value: '11', desc: 'Ancialle - Ancião' }
+]

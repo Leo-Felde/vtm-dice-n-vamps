@@ -94,7 +94,7 @@
       <StatsCheckbox
         v-model="form.ladroagem"
         label="Ladroagem"
-        tooltip="Atos de ladrões como arrombar fechaduras, desativar alarmes e roubar"
+        tooltip="Habilidade com fechaduras e furtos"
       >
         <q-input
           v-if="showSpecialties"

@@ -102,14 +102,28 @@
           />
         </div>
         <div class="col-4">
-          <q-input
+          <q-select
             v-model="form.generation"
+            :options="ageOptions"
             label="Geração *"
             outlined
             dense
             lazy-rules
+            map-options
+            emit-value
             :rules="[rules.obrigatorio]"
-          />
+          >
+            <template #option="scope">
+              <q-item v-bind="scope.itemProps">
+                <q-item-section>
+                  <q-item-label>{{ scope.opt.label }}</q-item-label>
+                  <q-item-label caption>
+                    {{ scope.opt.desc }}
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-select>
         </div>
       </div>
     </div>
@@ -164,7 +178,7 @@
 <script>
 import { ref, watch } from 'vue'
 
-import { predatorTypes, clanOptions } from '@/utils/constantes'
+import { predatorTypes, clanOptions, ageOptions } from '@/utils/constantes'
 import { rules } from '../../utils/validationRules'
 
 import FormAtributos from './Atributos.vue'
@@ -213,6 +227,7 @@ export default {
       rules,
       form,
       predatorTypes,
+      ageOptions,
       clanOptions,
       validate,
       reset

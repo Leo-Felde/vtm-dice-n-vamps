@@ -173,6 +173,7 @@ export default defineComponent({
 <style lang="sass" scoped>
 .card-ficha
   width: fit-content !important
+  height: fit-content
   margin-left: auto
   margin-right: auto
   padding: 20px
