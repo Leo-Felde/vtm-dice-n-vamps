@@ -94,7 +94,6 @@ export default defineComponent({
 
     const salvar = async () => {
       const valid = await formulario.value.validate()
-      console.log(valid)
 
       if (!valid) {
         setTimeout(() => {
@@ -107,7 +106,6 @@ export default defineComponent({
 
         return
       }
-      console.log('salvar')
 
       userStore.setUserData(formAtual.value)
       $q.notify({

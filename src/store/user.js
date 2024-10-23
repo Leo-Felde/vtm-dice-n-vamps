@@ -21,10 +21,14 @@ export const useUserStore = defineStore('user', {
       } else {
         this.userData.savedDie.push(combination)
       }
+
+      localStorage.setItem('userData', JSON.stringify(this.userData))
     },
 
     deleteDieCombination (inedx) {
       this.userData.savedDie.splice(inedx, 1)
+
+      localStorage.setItem('userData', JSON.stringify(this.userData))
     },
     
     clearUserData() {

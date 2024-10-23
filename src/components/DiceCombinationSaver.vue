@@ -42,6 +42,7 @@
             <q-item
               v-close-popup
               clickable
+              :disable="combinacaoSelecionada(index) || !combinacaoAtual[0]?.value || !combinacaoAtual[1]?.value"
               @click="replaceCombination(index)"
             >
               <q-item-section>Substituir</q-item-section>
@@ -93,7 +94,7 @@ export default defineComponent({
     }
 
     const replaceCombination = (index) => {
-      if (!props.combinacaoAtual?.length) return
+      if (!props.combinacaoAtual[0]?.value || !props.combinacaoAtual[1]?.value) return
 
       userStore.saveDieCobination(props.combinacaoAtual, index)
     }
@@ -111,7 +112,11 @@ export default defineComponent({
     }
 
     const somarCombinacao = (combinacao) => {
-      return userData.value.attributes[combinacao[0].value] + userData.value.abilities[combinacao[1].value] || 0
+      const att = combinacao[0].value === 'forca_de_vontade' ? userData.value.forca_de_vontade :  userData.value.attributes[combinacao[0].value] || 0
+      const hab = combinacao[1].value === 'forca_de_vontade' ? userData.value.forca_de_vontade : userData.value.abilities[combinacao[1].value] || 0
+      const sum = att + hab
+
+      return sum
     }
 
     return {

@@ -171,9 +171,9 @@ export default defineComponent({
 
     const handleStats = () => {
       if (userData.value.attributes) {
-        console.log(habilidade.value)
-        const att = userData.value.attributes[atributo.value?.value] || 0
-        const hab = userData.value.abilities[habilidade.value?.value] || 0
+        
+        const att = atributo.value?.value === 'forca_de_vontade' ? userData.value.forca_de_vontade : userData.value.attributes[atributo.value?.value] || 0
+        const hab = userData.value.abilities[habilidade.value?.value] === 'forca_de_vontade' ? userData.value.forca_de_vontade : userData.value.abilities[habilidade.value?.value] || 0
         const sum = att + hab
         
         dies.value = sum > 0 ? sum : 1
@@ -185,6 +185,8 @@ export default defineComponent({
     const selecionarCominacao = (combinacao) => {
       atributo.value = combinacao[0]
       habilidade.value = combinacao[1]
+
+      handleStats()
     }
 
     return {
