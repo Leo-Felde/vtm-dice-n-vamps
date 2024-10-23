@@ -42,7 +42,7 @@
         class="q-ml-md q-mt-md q-mb-sm"
         :class="{'text-accent' : messyCrit || (successes < difficulty && bestFail)}"
       >
-        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
+        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : cleanCrit ? 'Crítico' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
       </h5>
       <div
         class="d-flex"
@@ -128,6 +128,7 @@ export default{
     const criticals = ref([])
 
     const messyCrit = ref(false)
+    const cleanCrit = ref(false)
     const bestFail = ref(false)
 
     const rollDice = () => {
@@ -236,6 +237,7 @@ export default{
       successes,
       criticals,
       messyCrit,
+      cleanCrit,
       bestFail,
       rollDice,
       toggleReroll,

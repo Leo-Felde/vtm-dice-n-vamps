@@ -1,5 +1,5 @@
 <template>
-  <q-page class="d-flex q-mx-auto page-view">
+  <q-page class="d-flex q-mx-auto page-view q-pb-md">
     <div class="q-ml-auto q-my-auto">
       <q-card
         class="flex-column"
