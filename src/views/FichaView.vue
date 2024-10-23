@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page class="d-flex">
     <q-card
       class="card-ficha"
       flat
@@ -25,6 +25,36 @@
         />
       </div>
     </q-card>
+    <div class="floating-actions">
+      <q-card
+        class="card-btn"
+        @click="importarNovamente"
+      >
+        <q-icon
+          color="white"
+          name="sym_r_upload_file"
+          size="lg"
+        />
+        <q-tooltip>
+          Importar vampiro
+        </q-tooltip>
+      </q-card>
+
+      <q-card
+        class="card-btn"
+        @click="baixarJSON"
+      >
+        <q-icon
+          color="white"
+          name="sym_r_browser_updated"
+          size="lg"
+        />
+
+        <q-tooltip>
+          Baixar JSON
+        </q-tooltip>
+      </q-card>
+    </div>
   </q-page>
 </template>
 
@@ -86,7 +116,7 @@ export default defineComponent({
       })
     }
 
-    const descartarAlteracoes = () => {
+    const descartarAlteracoes = (reset = true) => {
       $q.dialog({
         title: 'Descartar alterações',
         message: 'Descartar todas as alterações e reverter os dados?',
@@ -100,9 +130,33 @@ export default defineComponent({
           color: 'primary',
           label: 'Cancelar'
         },
-      }).onCancel(() => {
+      }).onOk(() => false).onCancel(() => {
+        if (!reset) return true
         formulario.value.reset(userData.value)
       })
+    } 
+
+    const importarNovamente = async () => {
+      if (await userStore.importJson()) {
+        formulario.value.reset(userData.value)
+      }
+    }
+
+    const baixarJSON = () => {
+      const jsonStr = JSON.stringify(obj, null, 2)
+    
+      const blob = new Blob([jsonStr], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+    
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${fileName}.json`
+    
+      document.body.appendChild(a)
+      a.click()
+    
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
     }
 
     return {
@@ -110,7 +164,9 @@ export default defineComponent({
       formAtual,
       salvar,
       descartarAlteracoes,
-      alteracoesPendentes
+      alteracoesPendentes,
+      importarNovamente,
+      baixarJSON
     }
   }
 })
@@ -125,6 +181,12 @@ export default defineComponent({
   margin-top: 20px
   margin-bottom: 20px
 
+.floating-actions
+  position: fixed
+  right: 250px
+  top: 100px
+  cursor: pointer
+
 :deep
   #character, #attrs, #stats
     max-width: 900px
@@ -134,4 +196,12 @@ export default defineComponent({
     max-width: 1200px
     margin-left: auto
     margin-right: auto
+
+.card-btn
+  width: 60px
+  height: 60px
+  text-align: center
+  margin-bottom: 15px
+  .q-icon
+    margin-top: 10px
 </style> 

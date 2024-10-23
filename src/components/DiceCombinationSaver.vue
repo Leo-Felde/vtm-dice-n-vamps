@@ -29,7 +29,7 @@
           {{ index + 1 }}
         </span>
         <q-tooltip>
-          {{ combinacao[0].label }} + {{ combinacao[1].label }} ({{ userData[combinacao[0].value] + userData[combinacao[1].value] || '0' }})
+          {{ combinacao[0].label }} + {{ combinacao[1].label }} ({{ somarCombinacao(combinacao) }})
         </q-tooltip>
         <q-menu
           touch-position
@@ -87,7 +87,7 @@ export default defineComponent({
     })
 
     const saveCombination = () => {
-      if (!props.combinacaoAtual[0]?.value || !props.combinacaoAtual[1]?.value || combinacoesSalvas.value.length > 9) return
+      if (!props.combinacaoAtual[0]?.value || !props.combinacaoAtual[1]?.value || combinacoesSalvas.value?.length > 9) return
 
       userStore.saveDieCobination(props.combinacaoAtual)
     }
@@ -110,13 +110,18 @@ export default defineComponent({
       return JSON.stringify(props.combinacaoAtual) === JSON.stringify(combinacoesSalvas.value[index])
     }
 
+    const somarCombinacao = (combinacao) => {
+      return userData.value.attributes[combinacao[0].value] + userData.value.abilities[combinacao[1].value] || 0
+    }
+
     return {
       combinacoesSalvas,
       userData,
       saveCombination,
       replaceCombination,
       deleteCombination,
-      combinacaoSelecionada
+      combinacaoSelecionada,
+      somarCombinacao
     }
   }
 })

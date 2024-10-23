@@ -170,9 +170,10 @@ export default defineComponent({
     }
 
     const handleStats = () => {
-      if (userData.attributes) {
-        const att = userData.attributes[atributo.value] || 0
-        const hab = userData.abilities[habilidade.value] || 0
+      if (userData.value.attributes) {
+        console.log(habilidade.value)
+        const att = userData.value.attributes[atributo.value?.value] || 0
+        const hab = userData.value.abilities[habilidade.value?.value] || 0
         const sum = att + hab
         
         dies.value = sum > 0 ? sum : 1
