@@ -77,8 +77,21 @@
             label="Clã *"
             outlined
             dense
+            map-options
+            emit-value
             :rules="[rules.obrigatorio]"
-          />
+          >
+            <template #option="scope">
+              <q-item v-bind="scope.itemProps">
+                <q-item-section>
+                  <q-item-label>{{ scope.opt.label }}</q-item-label>
+                  <q-item-label caption>
+                    {{ scope.opt.desc }}
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-select>
         </div>
       </div>
       <div class="row q-col-gutter-md q-mb-sm">
@@ -178,7 +191,7 @@
 <script>
 import { ref, watch } from 'vue'
 
-import { predatorTypes, clanOptions, ageOptions } from '@/utils/constantes'
+import { predatorTypes, clanOptions, ageOptions } from '@/utils/constantes/index'
 import { rules } from '../../utils/validationRules'
 
 import FormAtributos from './Atributos.vue'

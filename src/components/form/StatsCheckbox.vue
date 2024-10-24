@@ -4,7 +4,7 @@
     :class="topLabel ? 'flex-column' : 'd-flex justify-space-between'"
   >
     <label
-      class="q-mr-smo"
+      class="q-mr-smo stats-label"
       :class="topLabel ? 'q-mx-auto' : 'q-my-auto'"
     >
       {{ label }}
@@ -111,4 +111,7 @@ export default {
   padding-left: 8px
   margin-top: auto
   margin-bottom: auto
+
+.stats-label
+  font-size: 0.8rem
 </style>

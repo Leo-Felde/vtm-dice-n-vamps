@@ -18,7 +18,7 @@
         dice-n-vamps
       </span>
 
-      <q-tooltip :delay="700">
+      <q-tooltip :delay="300">
         Voltar à página inicial
       </q-tooltip>
     </div>
