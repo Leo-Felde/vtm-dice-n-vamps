@@ -18,70 +18,162 @@ export const disciplinePowers = {
       value: 'manto_das_sombras',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: null,
-      desc: 'Cria sombras ao redor do usuário, dificultando sua detecção.',
-      longDesc: 'O usuário pode ofuscar sua presença em áreas com sombras, tornando-se mais difícil de ser visto ou detectado, especialmente em ambientes escuros.'
+      desc: 'Fica quase invisível quando parado no escuro (passivo)',
+      longDesc: 'Quando parado no escuro, fica coberto de sombras e quase invisível. Não engana eletrônicos.'
     },
     {
-      label: 'Unseen Passage',
-      value: 'unseen_passage',
+      label: 'Silêncio da morte',
+      value: 'silencio_da_morte',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Silencia seu sons como voz, passos e barulhos da roupa',
+      longDesc: 'Sons mais altos como um tiro ou um grito quebram o efeito. Não engana eletrônicos.'
+    },
+    {
+      label: 'Passagem invisível',
+      value: 'passagem_invisivel',
       level: 2,
       rouseCheck: false,
-      skillOrAttr: 'destreza+furtividade',
-      desc: 'O usuário se move de forma invisível.',
-      longDesc: 'Ao ativar esse poder, o usuário pode se mover sem ser visto, a menos que faça barulhos óbvios ou seja fisicamente detectado.'
+      desc: 'Permite se mover enquanto invisível.',
+      longDesc: 'Movimentos bruscos ou sons mais altos que um sussuro quebram o efeito. Não funciona se estiver sendo observado antes de usar.'
     },
     {
-      label: 'Ghost in the Machine',
-      value: 'ghost_in_the_machine',
+      label: 'Fantasma na máquina',
+      value: 'fantasma_na_maquina',
       level: 3,
       rouseCheck: false,
-      skillOrAttr: null,
-      desc: 'Permite manipular sistemas de vigilância eletrônicos.',
-      longDesc: 'O usuário pode obscurecer sua imagem em câmeras de segurança e outros dispositivos eletrônicos, evitando ser detectado por meios tecnológicos.'
+      desc: 'Torna-se mais difícil de detectar por equipamentos eletrônicos (passivo)',
+      longDesc: 'Equipamentos eletrônicos tem dificuldade para detecta-lo, os efeitos em fotos e gravações são menores. +3 dados ao contornar eletrônicos comuns.'
+    },
+    {
+      label: 'Máscara de Mil Faces',
+      value: 'mascara_mil_faces',
+      level: 3,
+      rouseCheck: false,
+      desc: 'Adota uma aparecência de um humano comum',
+      longDesc: 'Pode mudar sua aparência à de um humano comum mas não tem muito controle sobre sua aparência.'
     },
     {
       label: 'Ocultamento',
       value: 'ocultamento',
       level: 4,
+      secondaryDiscipline: 'auspicios-3',
       rouseCheck: true,
-      skillOrAttr: 'inteligencia+ocultismo',
-      desc: 'Esconde completamente o usuário de qualquer detecção.',
-      longDesc: 'Esse poder permite ao usuário desaparecer completamente de qualquer forma de detecção, seja visual, auditiva ou tecnológica, contanto que ele não seja interrompido ou agredido.'
+      desc: 'Oculta um objeto inanimado',
+      longDesc: 'Pode ocultar por uma noite (+1 noite para cada sucesso adicional) qualquer objeto inanimado. O feitiço quebra se o objeto for movido muito rápido ou longe de seu local original.'
     },
     {
-      label: 'Unmarked Grave',
-      value: 'unmarked_grave',
+      label: 'Desaparecimento',
+      value: 'desaparecimento',
+      level: 4,
+      rouseCheck: true,
+      requiredPower: 'manto_das_sombras',
+      desc: 'Utiliza Manto das Sombras e Passagem Invisível ao mesmo tempo.',
+      longDesc: 'Quando sumir na frente de alguém, role um teste disputado de Raciocínio + Ofuscação vs Raciocínio + Prontidão.'
+    },
+    {
+      label: 'Cobrindo o grupo',
+      value: 'cobrir_grupo',
       level: 5,
       rouseCheck: true,
-      skillOrAttr: null,
-      desc: 'Permite enterrar-se no chão e se tornar indetectável.',
-      longDesc: 'O usuário pode afundar no chão, tornando-se indetectável até emergir, mantendo total controle sobre seu estado durante a imersão.'
+      desc: 'Extende Sombras ou Passagem Invisível a outros',
+      longDesc: 'Realizar um teste de Raciocínio para obter numero de afetados e um Rouse Check. Pode fazer Rouse Checks adicionais para ocultar mais alvos.'
+    }, {
+      label: 'Disfarce do Impostor',
+      value: 'disfarce_do_impostor',
+      level: 5,
+      rouseCheck: true,
+      requiredPower: 'mascara_mil_faces',
+      desc: 'Pode definir a aparência da Máscara de Mil Faces',
+      longDesc: 'Pode assumir a aparência de um humano de qualquer gênero, cor ou tamanho. Deve ser uma pessoa real que precisa ser estudada anteriormente.'
     }
   ],
-  animalismo: [
-    {
-      label: 'Comando de Feras',
-      value: 'comando_de_feras',
-      level: 1,
-      rouseCheck: false,
-      skillOrAttr: 'carisma+lideranca',
-      desc: 'Controla animais para obedecerem ao usuário.',
-      longDesc: 'O usuário pode controlar animais ao seu redor, comandando-os a realizar tarefas simples ou agir de forma protetiva em seu nome.'
-    },
-    // Demais poderes de Animalismo...
-  ],
-  auspex: [
+  // animalismo: [
+  //   {
+  //     label: 'Comando de Feras',
+  //     value: 'comando_de_feras',
+  //     level: 1,
+  //     rouseCheck: false,
+  //     skillOrAttr: 'carisma+lideranca',
+  //     desc: 'Controla animais para obedecerem ao usuário.',
+  //     longDesc: 'O usuário pode controlar animais ao seu redor, comandando-os a realizar tarefas simples ou agir de forma protetiva em seu nome.'
+  //   },
+  //   // Demais poderes de Animalismo...
+  // ],
+  auspicios: [
     {
       label: 'Sentidos Aguçados',
       value: 'sentidos_agucados',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: null,
-      desc: 'Aprimora os sentidos do usuário além do normal.',
-      longDesc: 'Esse poder permite ao usuário ampliar seus sentidos, podendo perceber sons, cheiros e detalhes visuais que normalmente estariam além de sua capacidade.'
+      desc: 'Amplia os sentidos.',
+      longDesc: 'Os sentidos tornam-se sobrenaturalmente aguçados, adiciona Auspicios às Percepção. Deve rolar Raciocínio + Perseverança para resistir estimulos fortes como luz nos olhos, barulho de explosão e cheiro forte.'
     },
-    // Demais poderes de Auspício...
+    {
+      label: 'Sentir o Invisível',
+      value: 'sentir_o_invisivel',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Detecta presenças sobrenaturais e invisíveis ao redor.',
+      longDesc: 'Permite ver fantasmas, vampiros usando ofuscação, objetos invisiveis entre outras coisas sobrenaturais.'
+    },
+    {
+      label: 'Premonição',
+      value: 'premonicao',
+      level: 2,
+      rouseCheck: false,
+      desc: 'Recebe vislumbres de eventos futuros ou perigos iminentes.',
+      longDesc: 'Pode experimentar sensações ou visões espontâneas que podem ou não te alertar sobre o futuro próximo.'
+    },
+    {
+      label: 'Sondar a Alma',
+      value: 'sondar_a_alma',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Lê as emoções e intenções de outra pessoa.',
+      longDesc: 'Pode sondar a alma de outra pessoa, percebendo suas emoções mais profundas e detectando suas intenções ocultas, permitindo avaliar se alguém está mentindo ou agindo com malícia.'
+    },
+    {
+      label: 'Compartilhar os Sentidos',
+      value: 'compartilhar_os_sentidos',
+      level: 3,
+      rouseCheck: false,
+      desc: 'Vê, ouve e sente através de outro ser vivo.',
+      longDesc: 'Pode projetar seus sentidos a outro ser vivo, experimentando o que ele vê, ouve e sente.'
+    },
+    {
+      label: 'Toque do Espírito',
+      value: 'toque_do_espirito',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Lê as impressões psíquicas deixadas em objetos.',
+      longDesc: 'Ao tocar um objeto, o usuário pode sentir as impressões psíquicas deixadas por aqueles que o manipularam, aprendendo detalhes sobre seus proprietários, eventos passados ou emoções associadas ao objeto.'
+    },
+    {
+      label: 'Clarividência',
+      value: 'clarividencia',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Permite enxergar eventos distantes como se estivesse presente.',
+      longDesc: 'O usuário pode ver eventos em lugares distantes, como se estivesse fisicamente presente, observando situações ou áreas inacessíveis de maneira sobrenatural.'
+    },
+    {
+      label: 'Possessão',
+      value: 'possessao',
+      level: 5,
+      rouseCheck: true,
+      secondaryDiscipline: 'dominacao-3',
+      desc: 'Controla completamente outro ser vivo.',
+      longDesc: 'O usuário pode tomar controle completo de outro ser vivo, vendo através de seus olhos e comandando suas ações como se fosse uma marionete. A vítima perde toda a sua autonomia enquanto durar o efeito.'
+    },
+    {
+      label: 'Telepatia',
+      value: 'telepatia',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Lê os pensamentos de outra pessoa.',
+      longDesc: 'Permite ler a mente de alvos dentro de seu campo de visão e até falar nela, vampiros podem resistir ( Perseverança + Auspícios vs Raciocínio + Lábia).'
+    }
   ],
   celeridade: [
     {
@@ -130,51 +222,164 @@ export const disciplinePowers = {
       longDesc: 'O usuário pode atingir vários alvos em uma fração de segundo, movendo-se tão rápido que parece estar em múltiplos lugares ao mesmo tempo, atingindo todos os inimigos ao alcance.'
     }
   ],
-  dominate: [
+  dominacao: [
+    {
+      label: 'Nublar Memória',
+      value: 'nublar_memoria',
+      level: 1,
+      rouseCheck: false,
+      skillOrAttr: 'carisma',
+      desc: 'Apaga ou altera memórias recentes.',
+      longDesc: 'Nenhum teste é necessário contra uma vítima mortal despreparada. Uma vítima resistente ou outro vampiro requer um teste de Carisma + Dominação vs Raciocínio + Perseverança.'
+    },
     {
       label: 'Compelir',
       value: 'compelir',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: 'carisma+intimidacao',
-      desc: 'Comanda um alvo a realizar uma ação simples.',
-      longDesc: 'O usuário pode forçar um alvo a realizar uma ação simples ou obedecer a uma ordem direta, como "sente-se" ou "cale-se". O alvo precisa estar em um estado mental fraco ou distraído.'
+      skillOrAttr: 'Carisma',
+      desc: 'Dá uma ordem simples à vítima, que ela deve obedecer.',
+      longDesc: 'O usuário pode dar uma ordem verbal que a vítima deve seguir, desde que não vá contra seus instintos básicos.'
     },
     {
-      label: 'Nuvem da Mente',
-      value: 'nuvem_da_mente',
+      label: 'Hipnotizar',
+      value: 'hipnotizar',
       level: 2,
-      rouseCheck: false,
-      skillOrAttr: 'manipulacao+intimidacao',
-      desc: 'Apaga ou altera a memória recente de um alvo.',
-      longDesc: 'Esse poder permite ao usuário apagar ou alterar a memória de curto prazo de um alvo, fazendo-o esquecer eventos específicos ou mesmo inserindo memórias falsas no lugar.'
+      rouseCheck: true,
+      skillOrAttr: 'manipulacao',
+      desc: 'Induz um transe hipnótico na vítima, permitindo sugestões.',
+      longDesc: 'Colocar uma vítima em um estado hipnótico, permitindo que ela siga ordens mais complexas e a deixa sucetivel a outros comandoss.'
     },
     {
-      label: 'Mesmerismo',
-      value: 'mesmerismo',
+      label: 'Demência',
+      value: 'demencia',
       level: 3,
       rouseCheck: true,
-      skillOrAttr: 'manipulacao+inteligencia',
-      desc: 'Implanta uma sugestão mental que o alvo obedecerá posteriormente.',
-      longDesc: 'O usuário pode plantar uma sugestão na mente de um alvo que será ativada em um momento posterior, quando certas condições forem atendidas, como uma ordem latente.'
+      secondaryDiscipline: 'ofuscacao-2',
+      skillOrAttr: 'manipulacao',
+      desc: 'Instaura loucura temporária em uma vítima, perturbando seus pensamentos.',
+      longDesc: 'Pode causar um estado de loucura temporária na vítima, levando-a a comportamentos irracionais, delírios ou alucinações.'
     },
     {
-      label: 'Transe',
-      value: 'transe',
+      label: 'A Mente Esquecida',
+      value: 'a_mente_esquecida',
+      level: 3,
+      rouseCheck: true,
+      skillOrAttr: 'manipulacao',
+      desc: 'Altera ou apaga memórias antigas ou complexas.',
+      longDesc: 'Diferente de Nublar Memória, este poder permite ao usuário apagar ou modificar memórias de longo prazo na mente da vítima. Ele pode reescrever eventos passados ou apagar lembranças inteiras com precisão.'
+    },
+    {
+      label: 'Instruções Submersas',
+      value: 'instrucoes_submersas',
       level: 4,
       rouseCheck: true,
-      skillOrAttr: 'manipulacao+lideranca',
-      desc: 'Coloca o alvo em um estado hipnótico profundo.',
-      longDesc: 'Esse poder força um alvo a entrar em um transe profundo, tornando-o completamente obediente a comandos subsequentes, permanecendo nesse estado até ser liberado.'
+      skillOrAttr: 'manipulacao',
+      requiredPower: 'hipnotizar',
+      desc: 'Implanta ordens ocultas na mente da vítima, que são ativadas mais tarde.',
+      longDesc: 'Ao hipnotizar, pode fazer com que um comando que permaneça latente na mente da vítima até que seja ativado por uma palavra, ação ou evento específico.'
     },
     {
-      label: 'Possessão',
-      value: 'possessao',
+      label: 'Racionalizar',
+      value: 'racionalizar',
+      level: 4,
+      rouseCheck: false,
+      skillOrAttr: null,
+      desc: 'Faz a vítima justificar suas ações como voluntárias.',
+      longDesc: 'A vítima sob dominação acredita que as ordens que recebeu foram decisões próprias. Mesmo após o efeito passar, a vítima cria justificativas para suas ações, recusando-se a acreditar que estava sendo controlada.'
+    },
+    {
+      label: 'Manipulação em Massa',
+      value: 'manipulacao_em_massa',
       level: 5,
       rouseCheck: true,
-      skillOrAttr: 'inteligencia+lideranca',
-      desc: 'O usuário toma completo controle do corpo do alvo.',
-      longDesc: 'O usuário pode tomar total controle do corpo de um alvo, forçando-o a agir contra sua vontade e controlando todas as suas ações enquanto o poder durar.'
+      skillOrAttr: null,
+      desc: 'Permite dominar várias vítimas ao mesmo tempo.',
+      longDesc: 'O usuário pode dominar um grupo de vítimas simultaneamente, dando-lhes uma única ordem que todos devem seguir. Vampiros são mais resistentes sendo menos afetados conforme a quantidade presente.'
+    },
+    {
+      label: 'Decreto Final',
+      value: 'decreto_final',
+      level: 5,
+      rouseCheck: true,
+      skillOrAttr: null,
+      desc: 'Os poderes de dominação são seguidos até o fim.',
+      longDesc: 'Suas vítimas ignoram seus instintos primários e seguem seus comandos mesmo que isso as leve à morte. '
+    }
+  ],
+  potencia: [
+    {
+      label: 'Corpo Letal',
+      value: 'corpo_letal',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Causa dano agravado à mortais',
+      longDesc: 'Ignora um nível de armadura do alvo por nível de Potência. Rasga a pele e quebra ossos de quem atacar.'
+    },
+    {
+      label: 'Salto Crescente',
+      value: 'salto_crescente',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Canaliza sua força nas pernas',
+      longDesc: 'Pode saltar muito longe ou muito alto sem pegar impulso.'
+    },
+    {
+      label: 'Proeza',
+      value: 'proeza',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Realiza feitos de força sobre-humana',
+      longDesc: 'Adicione seu nível de Potência a Força ou Briga. Pode realizar atos como dobrar metal, rasgar armadura, etc'
+    },
+    {
+      label: 'Alimentação Brutal',
+      value: 'alimentacao_brutal',
+      level: 2,
+      rouseCheck: false,
+      desc: 'Drena sangue com grande violência',
+      longDesc: 'Se alimenta muito rapidamente, causando danos graves enquanto drena o sangue.'
+    },
+    {
+      label: 'Fagulha de Fúria',
+      value: 'fagulha_de_furia',
+      level: 3,
+      secondaryDiscipline: 'presenca-2',
+      rouseCheck: true,
+      desc: 'Incita alvos à fúria',
+      longDesc: 'Pode incitar um ou mais alvos a fúria e até frenesi.'
+    },
+    {
+      label: 'Pegada Inquietante',
+      value: 'pegada_inquietante',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Canaliza sua força nos dedos',
+      longDesc: 'Pode ser usado para escalar paredes sólidas ou dafinificar objetos e estruturas.'
+    },
+    {
+      label: 'Fórmula do Poderio',
+      value: 'formula_do_poderio',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Concentra seu poder de Potência no sangue',
+      longDesc: 'Vampiros que bebem do seu sangue ganham metade de seu nível de Potência e seus poderes até aquele nível.'
+    },
+    {
+      label: 'Golpe da Terra',
+      value: 'golpe_da_terra',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Causa tremores ao bater no chão',
+      longDesc: 'Ao bater no chão, causa um terremoto concentrado que da dano a todos e tudo em sua volta.'
+    },
+    {
+      label: 'Punhos de Caim',
+      value: 'punhos_de_caim',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Desfere golpes extremamente poderosos',
+      longDesc: 'realiza UMA ação por Rouse Check com extrema força, capaz de empalar, decaptar e até mesmo arrancar o coração do peito.'
     }
   ],
   fortitude: [
@@ -183,73 +388,139 @@ export const disciplinePowers = {
       value: 'resiliencia',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: null,
-      desc: 'Aumenta a resistência física do usuário.',
-      longDesc: 'O usuário se torna mais resistente a danos físicos, conseguindo absorver impactos e ferimentos que normalmente deixariam qualquer outra pessoa incapacitada.'
+      desc: 'Aumenta a resistência física (passivo)',
+      longDesc: 'Adicione seu nível de Fortitude a Vitalidade.'
     },
     {
-      label: 'Deflexão de Impactos',
-      value: 'deflexao_de_impactos',
-      level: 2,
+      label: 'Mente Inabalável',
+      value: 'mente_inabalavel',
+      level: 1,
       rouseCheck: false,
-      skillOrAttr: null,
-      desc: 'Desvia impactos de ataques com facilidade.',
-      longDesc: 'Esse poder permite ao usuário desviar ataques físicos, fazendo com que golpes que o atingiriam sejam desviados ou absorvidos com mínima consequência.'
+      desc: 'Concede resistência a coerções e pressões mentais (passivo)',
+      longDesc: 'Adiciona o nível de Fortitude a rolagens de resistência mental como Intimidação, sedução, etc.'
     },
     {
-      label: 'Tolerância Sobrenatural',
-      value: 'tolerancia_sobrenatural',
+      label: 'Dureza',
+      value: 'dureza',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Reduz o dano dos ataques físicos recebidos',
+      longDesc: 'Diminui danos superficiais pelo nível de Fortitude.'
+    },
+    {
+      label: 'Feras Resistentes',
+      value: 'feras_resistentes',
+      level: 2,
+      rouseCheck: true,
+      requiredPower: 'animalismo-1',
+      desc: 'Compartilha sua resistência com animais',
+      longDesc: 'Seu Familiar adiciona a vitalidade seu nível de Fortitude.'
+    },
+    {
+      label: 'Desafiar Maldição',
+      value: 'desafiar_maldicao',
       level: 3,
       rouseCheck: true,
-      skillOrAttr: null,
-      desc: 'Permite ignorar a dor e ferimentos mais graves.',
-      longDesc: 'O usuário pode suportar níveis extremos de dor e continuar lutando mesmo após ferimentos que normalmente o incapacitaria, ignorando ferimentos graves temporariamente.'
+      desc: 'Prepara se usangue para resistir a um danos agravados ou maldições',
+      longDesc: 'Resiste um pouco à maldições como dano da Luz Solar ou fogo. Dano agravado menor ou igual ao nível de Fortitude é reduzido a dano superficial.'
     },
     {
-      label: 'Mente de Ferro',
-      value: 'mente_de_ferro',
+      label: 'Reforçar a Muralha Interior',
+      value: 'reforcar_muralha_interior',
+      level: 3,
+      rouseCheck: false,
+      desc: 'Fortalece a mente de poderes sobrenaturais',
+      longDesc: 'Torna-se mais díficil de ser afetado por disciplinas sobrenaturais como Dominação e Auspícios.'
+    },
+    {
+      label: 'Fórmula da Resistência',
+      value: 'formula_da_resistencia',
       level: 4,
       rouseCheck: true,
-      skillOrAttr: 'inteligencia+composicao',
-      desc: 'Resiste a ataques mentais e controle.',
-      longDesc: 'Esse poder permite ao usuário resistir a tentativas de controle mental, hipnose ou ataques psíquicos, tornando sua mente tão resistente quanto seu corpo.'
+      desc: 'Concentra seu poder de Fortitude no sangue',
+      longDesc: 'Vampiros que bebem do seu sangue ganham metade de seu nível de Fortitude e seus poderes até aquele nível.'
     },
     {
-      label: 'Indestrutível',
-      value: 'indestrutivel',
+      label: 'Pele de Mármore',
+      value: 'pele_de_marmore',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Torna a pele dura como pedra',
+      longDesc: 'Endurece sua pele ao ponto de torná-la quase inquebrável, semelhante ao mármore.'
+    },
+    {
+      label: 'Proeza da Dor',
+      value: 'proeza_da_dor',
       level: 5,
       rouseCheck: true,
-      skillOrAttr: null,
-      desc: 'O usuário se torna praticamente imune a qualquer dano.',
-      longDesc: 'Em seu ápice, Fortitude permite que o usuário resista a praticamente qualquer tipo de dano, seja físico, mental ou sobrenatural, tornando-o quase impossível de derrubar.'
+      desc: 'Resiste às delibitações da dor ou ferimentos',
+      longDesc: 'Permite resistir à dor extrema e ferimentos graves, podendo continuar lutando ou fugir quando outros estariam debilitados.'
     }
   ],
-  sangue: [
+  feiticaria_de_sangue: [
     {
-      label: 'Sedução de Sangue',
-      value: 'seducao_de_sangue',
-      level: 1,
-      rouseCheck: false,
-      skillOrAttr: 'carisma+persuasao',
-      desc: 'Atrai outros vampiros ou mortais pelo sangue.',
-      longDesc: 'O usuário pode usar seu sangue como uma arma sedutora, fazendo com que outros vampiros ou mortais fiquem hipnotizados e atraídos por ele, manipulando-os através da sede.'
-    },
-    // Demais poderes de Sangue...
-  ],
-  taumaturgia: [
-    {
-      label: 'Caminho do Sangue',
-      value: 'caminho_do_sangue',
+      label: 'Sangue Ácido',
+      value: 'sangue_acido',
       level: 1,
       rouseCheck: true,
-      skillOrAttr: 'inteligencia+ocultismo',
-      desc: 'Manipula o sangue em rituais poderosos.',
-      longDesc: 'Através de rituais complexos, o usuário pode usar seu sangue ou o de outros para realizar feitos sobrenaturais, incluindo rastreamento, manipulação e controle de vitae.'
+      desc: 'Transforma parte do sangue em ácido',
+      longDesc: 'Transforma parte do sangue em ácido corrosivo, pode ser arremessado ou derramado.'
     },
-    // Demais poderes de Taumaturgia...
+    {
+      label: 'Um Gosto por Sangue',
+      value: 'um_gosto_por_sangue',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Permite identificar características ao beber sangue',
+      longDesc: 'Provando um pouco de sangue, o usuário pode determinar algumas características básicas do seu possuidor.'
+    },
+    {
+      label: 'Extinguir Vitae',
+      value: 'extinguir_vitae',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Drena temporariamente a Vitae da vítima',
+      longDesc: 'Drena a Vitae de um vampiro, aumentando sua fome o e deixando incapaz de realizar ações que dependem de sangue, como usar disciplinas ou curar ferimentos.'
+    },
+    {
+      label: 'Sangue Potente',
+      value: 'sangue_potente',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Aumenta temporariamente sua Potência de Sangue',
+      longDesc: 'Por uma cena, aumenta sua potência de sangue, tornando suas disciplinas mais fortes.'
+    },
+    {
+      label: 'Toque do Escorpião',
+      value: 'toque_do_escorpiao',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Transforma uma quantia do próprio sangue em um veneno',
+      longDesc: 'Capaz de afetar humanos e vampiros, podem usar este veneno para banhar armas de lâminas ou atécuspí-lo em um alvo.'
+    },
+    {
+      label: 'Furto de Vitae',
+      value: 'furto_de_vitae',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Permite extrair vitae de uma vítima à distância',
+      longDesc: 'Consome o sangue de uma vítima à distância sem precisar mordê-la.'
+    },
+    {
+      label: 'Carícia de Baal',
+      value: 'caricia_de_baal',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Faz uma quantia do próprio sangue ferver',
+      longDesc: 'Pode ser arremessado causando bastante dano, pode entrar em combustão causando dano de fogo além do dano de impacto.'
+    },
+    {
+      label: 'Caldeirão de Sangue',
+      value: 'caldeirao_de_sangue',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Faz o sangue de uma vítima ferver',
+      longDesc: 'Extremamente violento, este poder pode destruir a vítima de dentro para fora, causando danos extremos dependendo da quantidade de sangue afetada.'
+    }
   ]
-  // Outras disciplinas podem ser adicionadas aqui...
 }
-
-
-export default disciplinas

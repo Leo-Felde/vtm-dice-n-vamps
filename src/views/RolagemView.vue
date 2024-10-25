@@ -3,6 +3,7 @@
     <div class="q-ml-auto q-my-auto">
       <q-card
         v-if="validUserData"
+        id="stats-card"
         class="flex-column"
         bordered
         flat
@@ -49,6 +50,14 @@
             @selecionarCominacao="selecionarCominacao"
           />
         </div>
+      </q-card>
+      <q-card
+        v-else
+        id="noDataHint"
+        flat
+        bordered
+      >
+        Crie ou importe um vampiro para utilizar seus atributos e habilidades
       </q-card>
 
       <q-card
@@ -101,13 +110,6 @@
           :hunger="hunger"
           :difficulty="difficulty"
         />
-        <div
-          v-if="!validUserData"
-          id="noDataHint"
-        >
-          <q-separator />
-          <a>Importe seu vampiro</a> para utilizar seus atributos e habilidades de forma fácil
-        </div>
       </q-card>
     </div>
 
@@ -125,8 +127,7 @@
 import { computed, defineComponent, ref } from 'vue'
 import { useUserStore } from '../store/user'
 
-import { atributos, habilidades } from '@/utils/constantes'
-
+import { atributos, habilidades } from '@/utils/constantes/index'
 
 import DiceRoller from '@/components/DiceRoller.vue'
 import RouseCheck from '@/components/RouseCheck.vue'
@@ -248,10 +249,15 @@ export default defineComponent({
     width: 250px !important
 
 #noDataHint
-  position: absolute
-  bottom: 2px
   width: 100%
   left: 0px
   padding-left: 4px
   padding-right: 4px
+  text-align: center
+  color: #8c8c8c
+  
+#stats-card, #noDataHint
+  border-bottom: none !important
+  border-bottom-left-radius: 0px 
+  border-bottom-right-radius: 0px
 </style>

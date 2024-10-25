@@ -11,6 +11,7 @@ export const defaultUserData = {
   vitality: 0,
   forca_de_vontade: 0,
   savedDie: [],
+  disciplines: {},
   attributes:{
     forca: 0,
     destreza:0 ,
@@ -193,7 +194,7 @@ export const clanOptions = [
     desc: 'Os monstruosos e espiões',
     longDesc: 'Deformados por sua maldição, os Nosferatu são Membros grotescos que vivem nas sombras. Embora evitados pela sociedade, eles controlam vastas redes de informação.',
     clanPerseption: 'Evitados por causa de sua aparência grotesca, são respeitados como comerciantes de informações e segredos.',
-    disciplines: ['ofuscacao', 'animalismo', 'fortitude']
+    disciplines: ['ofuscacao', 'animalismo', 'potencia']
   },
   {
     label: 'Toreador',
