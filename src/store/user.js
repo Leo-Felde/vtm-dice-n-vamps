@@ -14,14 +14,19 @@ export const useUserStore = defineStore('user', {
     },
 
     saveDieCobination (combination, replaceIndex = undefined) {
-      if (this.userData.savedDie.filter(die => JSON.stringify(die) === JSON.stringify(combination))[0]) return
+      if (this.userData?.savedDie) {
+        if (this.userData.savedDie.filter(die => JSON.stringify(die) === JSON.stringify(combination))[0]) return
 
-      if (replaceIndex !== undefined && replaceIndex >= 0) {
-        this.userData.savedDie.splice(replaceIndex, 1, combination)
+        if (replaceIndex !== undefined && replaceIndex >= 0) {
+          this.userData.savedDie.splice(replaceIndex, 1, combination)
+          return
+        }
+      
       } else {
-        this.userData.savedDie.push(combination)
+        this.userData.savedDie = []
       }
 
+      this.userData.savedDie.push(combination)
       localStorage.setItem('userData', JSON.stringify(this.userData))
     },
 
