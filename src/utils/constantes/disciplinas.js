@@ -89,6 +89,81 @@ export const disciplinePowers = {
       longDesc: 'Pode assumir a aparência de um humano de qualquer gênero, cor ou tamanho. Deve ser uma pessoa real que precisa ser estudada anteriormente.'
     }
   ],
+  rapidez: [
+    {
+      label: 'Graça Felina',
+      value: 'graca_felina',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Aumenta a destreza e equilíbrio.',
+      longDesc: 'Move-se com uma graça sobrenatural, tornando-se extremamente ágil e equilibrado.'
+    },
+    {
+      label: 'Reflexos Rápidos',
+      value: 'reflexos_rapidos',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Reflexos muito rápidos',
+      longDesc: 'RApesar de seus corpos não conseguirem desafiar as leis naturais, vampiros com esse poder percebem eventos instantaneamente e podem reagir a eles com vivacidade sobre-humana.eage a ameaças e estímulos com uma velocidade impressionante, capaz de desviar-se de ataques e mover-se mais rapidamente do que o olho humano pode acompanhar. Ideal para combates e situações onde a velocidade é crucial.'
+    },
+    {
+      label: 'Agilidade',
+      value: 'agilidade',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Permite reagir tão rápido quanto seus reflexos',
+      longDesc: 'Reação rápida, adicione o nível de Rapidez a testes de Destreza ou Atletismo.'
+    },
+    {
+      label: 'Piscar',
+      value: 'piscar',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Pode mover-se em alta velocidade em curtas distâncias',
+      longDesc: 'Cobre distâncias curtas em um instante, dando a impressão de estar se teleportando.'
+    },
+    {
+      label: 'Travessia',
+      value: 'travessia',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Permite escalar e se mover com facilidade por superfícies verticais.',
+      longDesc: 'Concede a habilidade extraordinária de escalar superfícies e se mover em terrenos íngremes com rapidez e segurança.'
+    },
+    {
+      label: 'Fórmula da Elegância',
+      value: 'formula_da_elegancia',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Concentra seu poder de Rapidez no sangue',
+      longDesc: 'Vampiros que bebem seu sangue ganham metade de seu nível de Rapidez e os poderes até aquele nível.'
+    },
+    {
+      label: 'Mira Infalível',
+      value: 'mira_infalivel',
+      level: 3,
+      rouseCheck: false,
+      requiredDiscipline: 'auspicios-2',
+      desc: 'Realiza ataques precisos e certeiros.',
+      longDesc: 'O mundo ao redor dele desacelera e o vampiro pode mirar e arremessar ou disparar qualquer arma em um alvo se o alvo estiver imóvel.'
+    },
+    {
+      label: 'Ataque Relâmpago',
+      value: 'ataque_relampago',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Realizar ataques em alta velocidade.',
+      longDesc: 'Mais rápido do que o olho pode acompanhar, o vampiro pode atacar com os punhos ou armas brancas tão rápido que o oponente é incapaz de se defender ou fazer ações evasivas.'
+    },
+    {
+      label: 'Fração de Segundo',
+      value: 'fracao_de_segundo',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Permite agir fora do fluxo normal do tempo por um breve momento.',
+      longDesc: 'A velocidade cujo vampiro se move somada a sua percepção superapurada permite que ele reaja a eventos a sua volta no momento que os percebe.'
+    }
+  ],
   animalismo: [
     {
       label: 'Vínculo Familiar',
