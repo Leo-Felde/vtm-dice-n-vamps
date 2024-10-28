@@ -155,7 +155,7 @@
 
 <script>
 import { computed, defineComponent, ref } from 'vue'
-import { atributos, habilidades, ageOptions } from '@/utils/constantes'
+import { atributos, habilidades, ageOptions } from '@/utils/constantes/index'
 import { disciplineOptions, disciplinePowers } from '@/utils/constantes/disciplinas'
 
 import { useUserStore } from '@/store/user'

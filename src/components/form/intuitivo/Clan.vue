@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { clanOptions } from '@/utils/constantes'
+import { clanOptions } from '@/utils/constantes/index'
 import { defineComponent } from 'vue'
 
 
