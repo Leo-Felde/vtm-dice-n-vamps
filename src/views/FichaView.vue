@@ -8,7 +8,9 @@
       <FormCompleto
         ref="formulario"
         v-model="formAtual"
+        :disable="!usuarioImportado"
       />
+
       <div class="d-flex">
         <q-btn
           class="q-ml-auto"
@@ -91,6 +93,10 @@ export default defineComponent({
       return !isEqual(userData.value, formAtual.value) 
     })
 
+    const usuarioImportado = computed(() => {
+      return !!userData.value.name
+    })
+
     const salvar = async () => {
       const valid = await formulario.value.validate()
 
@@ -160,6 +166,7 @@ export default defineComponent({
 
     return {
       formulario,
+      usuarioImportado,
       formAtual,
       salvar,
       descartarAlteracoes,
