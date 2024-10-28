@@ -96,7 +96,7 @@
             class="q-mx-sm"
             label="Dificuldade"
             type="number"
-            min="1"
+            min="0"
             stack-label
             filled
             dense

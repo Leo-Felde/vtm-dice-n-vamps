@@ -25,6 +25,12 @@
           clickable
           to="/ficha"
         >
+          <q-item-section avatar>
+            <q-img
+              :src="getClanIcon()"
+              class="q-ml-md"
+            />
+          </q-item-section>
           <q-item-section>
             <q-item-label class="q-mx-auto text-h6">
               {{ userData.name }}
@@ -208,6 +214,10 @@ export default defineComponent({
         })
       }
     }
+    
+    const getClanIcon = () => {
+      return require(`@/assets/img/logo-${userData.value.clan || ''}.png`)
+    }
 
     const getDisciplines = () => {
       return userData.value.disciplines ? Object?.keys(userData.value.disciplines) : []
@@ -232,6 +242,7 @@ export default defineComponent({
       habMentais,
       userData,
       importarFicha,
+      getClanIcon,
       getDisciplines,
       getDisciplineIcon
     }
