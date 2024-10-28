@@ -130,7 +130,12 @@
             style="justify-content: start;"
           >
             <label class="">
+              <q-img
+                :src="getDisciplineIcon(disciplina)"
+                width="30px"
+              />
               {{ disciplineOptions.filter(disc => disc.value === disciplina)[0].label }} {{ userData.disciplines[disciplina].level }}
+      
             </label>
             <span
               v-for="power in userData.disciplines[disciplina]?.powers"
@@ -205,7 +210,11 @@ export default defineComponent({
     }
 
     const getDisciplines = () => {
-      return userData.value.disciplines ? Object.keys(userData.disciplines) : []
+      return userData.value.disciplines ? Object?.keys(userData.value.disciplines) : []
+    }
+
+    const getDisciplineIcon = (disciplina) => {
+      return require(`@/assets/img/disciplinas/${disciplina || 'ofuscacao'}-icon.png`)
     }
 
     return {
@@ -223,7 +232,8 @@ export default defineComponent({
       habMentais,
       userData,
       importarFicha,
-      getDisciplines
+      getDisciplines,
+      getDisciplineIcon
     }
   }
 })

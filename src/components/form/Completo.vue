@@ -272,7 +272,7 @@ export default {
 
     const getDisciplines = () => {
       const clanDisciplines = clanOptions.filter(clan => clan.value === form.value?.clan)[0]?.disciplines || []
-      const userDisciplines = form.value.disciplines ? Object.keys(form.value.disciplines) : []
+      const userDisciplines = form.value?.disciplines ? Object.keys(form.value.disciplines) : []
 
       const disciplines = [...new Set([...clanDisciplines, ...userDisciplines])]
 

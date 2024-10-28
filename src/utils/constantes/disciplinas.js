@@ -3,6 +3,7 @@ export const disciplineOptions = [
   { label: 'Animalismo', value: 'animalismo', desc: 'Comunicação e comando de animais, além de despertar o lado bestial em si mesmo ou nos outros.' },
   { label: 'Auspícios', value: 'auspicios', desc: 'Percepção sobrenatural, sentindr emoções, ler pensamentos e ver além do véu da realidade.' },
   { label: 'Dominação', value: 'dominacao', desc: 'Controle da mente, permite apagar memórias e forçar atos contra a vontade própria. ' },
+  { label: 'Presença', value: 'presenca', desc: 'O vampiro se torna irresistivelmente carismático, influenciando emoções e comportamento de forma intensa.'},
   { label: 'Feitiçaria de Sangue', value: 'feiticaria_de_sangue', desc: 'Exclusivo aos Ventrue, manipulação de sangue através de magia.' },
   { label: 'Fortitude', value: 'fortitude', desc: 'Resistência física e mental, tornando-o quase invulnerável.' },
   { label: 'Metamorfose', value: 'metamorfose', desc: 'Manipulação do próprio corpo, reduzir o proprio peso, viar névoa ou transformar-se em animais.' },
@@ -210,7 +211,7 @@ export const disciplinePowers = {
       level: 4,
       rouseCheck: true,
       desc: 'Lê as impressões psíquicas deixadas em objetos.',
-      longDesc: 'Ao tocar um objeto, o usuário pode sentir as impressões psíquicas deixadas por aqueles que o manipularam, aprendendo detalhes sobre seus proprietários, eventos passados ou emoções associadas ao objeto.'
+      longDesc: 'Ao tocar um objeto, pode sentir as impressões psíquicas deixadas por aqueles que o manipularam, aprendendo detalhes sobre seus proprietários, eventos passados ou emoções associadas ao objeto.'
     },
     {
       label: 'Clarividência',
@@ -218,7 +219,7 @@ export const disciplinePowers = {
       level: 5,
       rouseCheck: true,
       desc: 'Permite enxergar eventos distantes como se estivesse presente.',
-      longDesc: 'O usuário pode ver eventos em lugares distantes, como se estivesse fisicamente presente, observando situações ou áreas inacessíveis de maneira sobrenatural.'
+      longDesc: 'Pode ver eventos em lugares distantes, como se estivesse fisicamente presente, observando situações ou áreas inacessíveis de maneira sobrenatural.'
     },
     {
       label: 'Possessão',
@@ -227,7 +228,7 @@ export const disciplinePowers = {
       rouseCheck: true,
       requiredDiscipline: 'dominacao-3',
       desc: 'Controla completamente outro ser vivo.',
-      longDesc: 'O usuário pode tomar controle completo de outro ser vivo, vendo através de seus olhos e comandando suas ações como se fosse uma marionete. A vítima perde toda a sua autonomia enquanto durar o efeito.'
+      longDesc: 'Pode tomar controle completo de outro ser vivo, vendo através de seus olhos e comandando suas ações como se fosse uma marionete. A vítima perde toda a sua autonomia enquanto durar o efeito.'
     },
     {
       label: 'Telepatia',
@@ -238,51 +239,87 @@ export const disciplinePowers = {
       longDesc: 'Permite ler a mente de alvos dentro de seu campo de visão e até falar nela, vampiros podem resistir ( Perseverança + Auspícios vs Raciocínio + Lábia).'
     }
   ],
-  celeridade: [
+  presenca: [
     {
-      label: 'Reflexos Rápidos',
-      value: 'reflexos_rapidos',
+      label: 'Fascínio',
+      value: 'fascinio',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: null,
-      desc: 'Remove penalidades por agir rapidamente.',
-      longDesc: 'O usuário pode agir e reagir em velocidade sobre-humana, eliminando penalidades relacionadas a ações rápidas e permitindo reflexos quase instantâneos.'
+      desc: 'Atrai a atenção de quem observa o vampiro.',
+      longDesc: 'Torna-se fascinante para aqueles ao seu redor. As pessoas são atraídas para o vampiro, tornando-se mais receptivas e dispostas a agradá-lo ou ouvi-lo.'
     },
     {
-      label: 'Movimento Relâmpago',
-      value: 'movimento_relampago',
-      level: 2,
+      label: 'Ameaça',
+      value: 'ameaca',
+      level: 1,
       rouseCheck: true,
-      skillOrAttr: 'destreza+atletismo',
-      desc: 'Move-se com velocidade extrema.',
-      longDesc: 'O usuário pode atravessar grandes distâncias em um piscar de olhos, realizando movimentos tão rápidos que parecem um borrão para os olhos normais.'
+      desc: 'Projeta uma aura de medo, intimidando alvos ao redor.',
+      longDesc: 'Emite uma aura de medo que desanima aqueles que o cercam, tornando-os apreensivos e menos propensos a confrontá-lo.'
     },
     {
-      label: 'Golpe Veloz',
-      value: 'golpe_veloz',
+      label: 'Olhos da Serpente',
+      value: 'olhos_da_serpente',
+      level: 2,
+      rouseCheck: false,
+      desc: 'Hipnotiza um alvo ao olhar em seus olhos.',
+      longDesc: 'Mantendo o contato visual com um alvo, pode hipnotizar-lo, capturando-a em um transe encantador.'
+    },
+    {
+      label: 'Beijo Prolongado',
+      value: 'beijo_prolongado',
+      level: 2,
+      rouseCheck: false,
+      desc: 'Prolonga o êxtase do beijo vampírico',
+      longDesc: 'Os mortais dos quais de que se alimenta se tornam viciados ao Beijo, obcecadas por isso e até procuram o vampiro para reiteradas alimentações.'
+    },
+    {
+      label: 'Olhar Aterrorizante',
+      value: 'olhar_aterrorizante',
       level: 3,
       rouseCheck: true,
-      skillOrAttr: 'destreza+briga',
-      desc: 'Desfere golpes mais rápidos que o olho pode ver.',
-      longDesc: 'Esse poder permite ao usuário atacar com tanta rapidez que seus oponentes não conseguem acompanhar seus movimentos, tornando seus golpes praticamente inevitáveis.'
+      desc: 'Induz medo profundo ao fazer contato visual',
+      longDesc: 'Expondo brevemente sua natureza vampírica, pode afetar um único alvo com absoluto terror.'
     },
     {
-      label: 'Dança da Serpente',
-      value: 'danca_da_serpente',
+      label: 'Transe',
+      value: 'transe',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Coloca um alvo em um estado de transe profundo.',
+      longDesc: 'foca sua atração sobrenatural em uma única pessoa, introduzindo nela admiração e paixão arrebatadoras capazes de deixá-la de joelhos'
+    },
+    {
+      label: 'Voz Irresistível',
+      value: 'voz_irresistivel',
       level: 4,
       rouseCheck: true,
-      skillOrAttr: null,
-      desc: 'Permite se mover com graça e agilidade incomparáveis.',
-      longDesc: 'O usuário se move com a fluidez de uma serpente, desviando de ataques e se esquivando de perigos com facilidade sobrenatural, parecendo impossível de atingir.'
+      requiredDiscipline: 'dominacao-1',
+      desc: 'A voz do vampiro se torna irresistivelmente persuasiva.',
+      longDesc: 'Permite usar os poderes de Dominação sem contato visual, ouvir sua voz é suficiente.'
     },
     {
-      label: 'Golpe em Velocidade Relâmpago',
-      value: 'golpe_velocidade_relampago',
+      label: 'Convocação',
+      value: 'convocacao',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Permite chamar uma vítima de qualquer lugar.',
+      longDesc: 'Alguém em que foi usado outro poder de Presença ou tomado seu sangue sente-se atraído a sua direção. Dura uma noite.'
+    },
+    {
+      label: 'Majestade',
+      value: 'majestade',
       level: 5,
       rouseCheck: true,
-      skillOrAttr: null,
-      desc: 'Ataca múltiplos alvos quase instantaneamente.',
-      longDesc: 'O usuário pode atingir vários alvos em uma fração de segundo, movendo-se tão rápido que parece estar em múltiplos lugares ao mesmo tempo, atingindo todos os inimigos ao alcance.'
+      desc: 'Emana uma aura de autoridade absoluta e respeito.',
+      longDesc: 'Quer seja aparecendo como devastadoramente belo, monstruosamente assustador ou manejando uma ordem absoluta, todos que o veem são atingidos por sua imagem.'
+    },
+    {
+      label: 'Magnetismo Estelar',
+      value: 'magnetismo_estelar',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Os poderes de Presença agora funcionam através da tecnologia.',
+      longDesc: 'Pode realizar um rouse-check adicional em qualquer poder de Presença para que funcione atraés de tecnologia (telefone, gravações e etc).'
     }
   ],
   dominacao: [
@@ -291,7 +328,6 @@ export const disciplinePowers = {
       value: 'nublar_memoria',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: 'carisma',
       desc: 'Apaga ou altera memórias recentes.',
       longDesc: 'Nenhum teste é necessário contra uma vítima mortal despreparada. Uma vítima resistente ou outro vampiro requer um teste de Carisma + Dominação vs Raciocínio + Perseverança.'
     },
@@ -300,16 +336,14 @@ export const disciplinePowers = {
       value: 'compelir',
       level: 1,
       rouseCheck: false,
-      skillOrAttr: 'Carisma',
       desc: 'Dá uma ordem simples à vítima, que ela deve obedecer.',
-      longDesc: 'O usuário pode dar uma ordem verbal que a vítima deve seguir, desde que não vá contra seus instintos básicos.'
+      longDesc: 'Pode dar uma ordem verbal que a vítima deve seguir, desde que não vá contra seus instintos básicos.'
     },
     {
       label: 'Hipnotizar',
       value: 'hipnotizar',
       level: 2,
       rouseCheck: true,
-      skillOrAttr: 'manipulacao',
       desc: 'Induz um transe hipnótico na vítima, permitindo sugestões.',
       longDesc: 'Colocar uma vítima em um estado hipnótico, permitindo que ela siga ordens mais complexas e a deixa sucetivel a outros comandoss.'
     },
@@ -319,7 +353,6 @@ export const disciplinePowers = {
       level: 3,
       rouseCheck: true,
       requiredDiscipline: 'ofuscacao-2',
-      skillOrAttr: 'manipulacao',
       desc: 'Instaura loucura temporária em uma vítima, perturbando seus pensamentos.',
       longDesc: 'Pode causar um estado de loucura temporária na vítima, levando-a a comportamentos irracionais, delírios ou alucinações.'
     },
@@ -328,16 +361,14 @@ export const disciplinePowers = {
       value: 'a_mente_esquecida',
       level: 3,
       rouseCheck: true,
-      skillOrAttr: 'manipulacao',
       desc: 'Altera ou apaga memórias antigas ou complexas.',
-      longDesc: 'Diferente de Nublar Memória, este poder permite ao usuário apagar ou modificar memórias de longo prazo na mente da vítima. Ele pode reescrever eventos passados ou apagar lembranças inteiras com precisão.'
+      longDesc: 'Diferente de Nublar Memória, este poder permite apagar ou modificar memórias de longo prazo na mente da vítima. Pode reescrever eventos passados ou apagar lembranças inteiras com precisão.'
     },
     {
       label: 'Instruções Submersas',
       value: 'instrucoes_submersas',
       level: 4,
       rouseCheck: true,
-      skillOrAttr: 'manipulacao',
       requiredPower: 'hipnotizar',
       desc: 'Implanta ordens ocultas na mente da vítima, que são ativadas mais tarde.',
       longDesc: 'Ao hipnotizar, pode fazer com que um comando que permaneça latente na mente da vítima até que seja ativado por uma palavra, ação ou evento específico.'
@@ -347,25 +378,22 @@ export const disciplinePowers = {
       value: 'racionalizar',
       level: 4,
       rouseCheck: false,
-      skillOrAttr: null,
       desc: 'Faz a vítima justificar suas ações como voluntárias.',
-      longDesc: 'A vítima sob dominação acredita que as ordens que recebeu foram decisões próprias. Mesmo após o efeito passar, a vítima cria justificativas para suas ações, recusando-se a acreditar que estava sendo controlada.'
+      longDesc: 'A vítima sob dominação acredita que as ordens que recebeu foram decisões próprias. Mesmo após o efeito passar, a vítima cria justificativas para suas ações.'
     },
     {
       label: 'Manipulação em Massa',
       value: 'manipulacao_em_massa',
       level: 5,
       rouseCheck: true,
-      skillOrAttr: null,
       desc: 'Permite dominar várias vítimas ao mesmo tempo.',
-      longDesc: 'O usuário pode dominar um grupo de vítimas simultaneamente, dando-lhes uma única ordem que todos devem seguir. Vampiros são mais resistentes sendo menos afetados conforme a quantidade presente.'
+      longDesc: 'Pode dominar um grupo de vítimas simultaneamente, dando-lhes uma única ordem que todos devem seguir. Vampiros são mais resistentes sendo menos afetados conforme a quantidade presente.'
     },
     {
       label: 'Decreto Final',
       value: 'decreto_final',
       level: 5,
       rouseCheck: true,
-      skillOrAttr: null,
       desc: 'Os poderes de dominação são seguidos até o fim.',
       longDesc: 'Suas vítimas ignoram seus instintos primários e seguem seus comandos mesmo que isso as leve à morte. '
     }
@@ -530,12 +558,12 @@ export const disciplinePowers = {
       longDesc: 'Transforma parte do sangue em ácido corrosivo, pode ser arremessado ou derramado.'
     },
     {
-      label: 'Um Gosto por Sangue',
-      value: 'um_gosto_por_sangue',
+      label: 'Gosto por Sangue',
+      value: 'gosto_por_sangue',
       level: 1,
       rouseCheck: false,
       desc: 'Permite identificar características ao beber sangue',
-      longDesc: 'Provando um pouco de sangue, o usuário pode determinar algumas características básicas do seu possuidor.'
+      longDesc: 'Provando um pouco de sangue, pode determinar algumas características básicas do seu dono.'
     },
     {
       label: 'Extinguir Vitae',
@@ -559,7 +587,7 @@ export const disciplinePowers = {
       level: 3,
       rouseCheck: true,
       desc: 'Transforma uma quantia do próprio sangue em um veneno',
-      longDesc: 'Capaz de afetar humanos e vampiros, podem usar este veneno para banhar armas de lâminas ou atécuspí-lo em um alvo.'
+      longDesc: 'Transforma parte de seu sangue em um veneno paralisante. Pode ser cuspido, derramado ou para cobrir armas.'
     },
     {
       label: 'Furto de Vitae',
@@ -575,7 +603,7 @@ export const disciplinePowers = {
       level: 5,
       rouseCheck: true,
       desc: 'Faz uma quantia do próprio sangue ferver',
-      longDesc: 'Pode ser arremessado causando bastante dano, pode entrar em combustão causando dano de fogo além do dano de impacto.'
+      longDesc: 'Faz parte de seu sangue ferver. Pode ser derramado ou derramado, não pode ser manipulado com as mãos.'
     },
     {
       label: 'Caldeirão de Sangue',
@@ -583,7 +611,7 @@ export const disciplinePowers = {
       level: 5,
       rouseCheck: true,
       desc: 'Faz o sangue de uma vítima ferver',
-      longDesc: 'Extremamente violento, este poder pode destruir a vítima de dentro para fora, causando danos extremos dependendo da quantidade de sangue afetada.'
+      longDesc: 'Faz o sangue de um alvo ferver, pode causar dano extremos ou destruir a vítima dependendo de quanto sangue for afetado.'
     }
   ]
 }
