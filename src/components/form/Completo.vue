@@ -13,6 +13,7 @@
             dense
             lazy-rules
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           />
         </div>
         <div class="col-4">
@@ -23,6 +24,7 @@
             dense
             lazy-rules
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           />
         </div>
         <div class="col-4">
@@ -36,6 +38,7 @@
             map-options
             emit-value
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           >
             <template #option="scope">
               <q-item v-bind="scope.itemProps">
@@ -58,6 +61,7 @@
             outlined
             dense
             lazy-rules
+            :disable="disable"
           />
         </div>
         <div class="col-4">
@@ -68,6 +72,7 @@
             dense
             lazy-rules
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           />
         </div>
         <div class="col-4">
@@ -80,6 +85,7 @@
             map-options
             emit-value
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           >
             <template #option="scope">
               <q-item v-bind="scope.itemProps">
@@ -103,6 +109,7 @@
             dense
             lazy-rules
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           />
         </div>
         <div class="col-4">
@@ -112,6 +119,7 @@
             outlined
             dense
             lazy-rules
+            :disable="disable"
           />
         </div>
         <div class="col-4">
@@ -125,6 +133,7 @@
             map-options
             emit-value
             :rules="[rules.obrigatorio]"
+            :disable="disable"
           >
             <template #option="scope">
               <q-item v-bind="scope.itemProps">
@@ -150,7 +159,10 @@
       </h5>
       <q-separator class="q-mt-sm q-mb-md" />
 
-      <FormAtributos v-model="form.attributes" />
+      <FormAtributos
+        v-model="form.attributes"
+        :disable="disable"
+      />
 
       <div class="d-flex">
         <StatsCheckbox
@@ -159,13 +171,16 @@
           label="Vitalidade"
           top-label
           checkbox-count="10"
+          :disable="disable"
         />
+        
         <StatsCheckbox
           v-model="form.forca_de_vontade"
           class="q-mr-auto q-ml-md"
           label="Força de vontade"
           top-label
           checkbox-count="10"
+          :disable="disable"
         />
       </div>
     </div>
@@ -182,7 +197,8 @@
       <FormHabilidades
         v-model="form.abilities"
         v-model:especialidades="form.specialties"
-        show-specialties=""
+        show-specialties
+        :disable="disable"
       />
     </div>
 
@@ -204,6 +220,7 @@
             v-model="form.disciplines[discipline]"
             :disciplina="discipline"
             :locked-powers="getAccquiredPowers(discipline)"
+            :disable="disable"
           />
         </div>
       </div>
@@ -238,6 +255,7 @@ export default {
       type: Object,
       required: true
     },
+    disable: Boolean,
     showSaveBtn: Boolean,
     showDiscardBtn: Boolean
   },
@@ -253,7 +271,7 @@ export default {
     { deep: true })
 
     const getDisciplines = () => {
-      const clanDisciplines = clanOptions.filter(clan => clan.value === form.value.clan)[0].disciplines
+      const clanDisciplines = clanOptions.filter(clan => clan.value === form.value?.clan)[0]?.disciplines || []
       const userDisciplines = form.value.disciplines ? Object.keys(form.value.disciplines) : []
 
       const disciplines = [...new Set([...clanDisciplines, ...userDisciplines])]

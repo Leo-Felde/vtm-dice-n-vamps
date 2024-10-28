@@ -7,16 +7,19 @@
       <StatsCheckbox
         v-model="form.forca"
         label="Força"
+        :disable="disable"
       />
 
       <StatsCheckbox
         v-model="form.destreza"
         label="Destreza"
+        :disable="disable"
       />
 
       <StatsCheckbox
         v-model="form.vigor"
         label="Vigor"
+        :disable="disable"
       />
     </div>
 
@@ -27,16 +30,19 @@
       <StatsCheckbox
         v-model="form.carisma"
         label="Carisma"
+        :disable="disable"
       />
 
       <StatsCheckbox
         v-model="form.manipulacao"
         label="Manipulação"
+        :disable="disable"
       />
 
       <StatsCheckbox
         v-model="form.autocontrole"
         label="Autocontrole"
+        :disable="disable"
       />
     </div>
     <div class="col-4 q-gutter-y-sm">
@@ -46,16 +52,19 @@
       <StatsCheckbox
         v-model="form.inteligencia"
         label="Inteligência"
+        :disable="disable"
       />
 
       <StatsCheckbox
         v-model="form.raciocinio"
         label="Raciocínio"
+        :disable="disable"
       />
 
       <StatsCheckbox
         v-model="form.determinacao"
         label="Determinação"
+        :disable="disable"
       />
     </div>
   </div>
@@ -74,7 +83,8 @@ export default defineComponent({
     modelValue: {
       type: Object,
       required: true
-    }
+    },
+    disable: Boolean,
   },
   
   setup(props, { emit }) {
