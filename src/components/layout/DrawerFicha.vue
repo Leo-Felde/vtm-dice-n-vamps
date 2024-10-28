@@ -124,7 +124,7 @@
         </label>
         <div class="row q-col-gutter-sm">
           <div
-            v-for="disciplina in Object.keys(userData.disciplines)"
+            v-for="disciplina in getDisciplines()"
             :key="`dados-disciplina-${disciplina}`"
             class="col-6 flex-column"
             style="justify-content: start;"
@@ -204,6 +204,10 @@ export default defineComponent({
       }
     }
 
+    const getDisciplines = () => {
+      return userData.value.disciplines ? Object.keys(userData.disciplines) : []
+    }
+
     return {
       atributos,
       habilidades,
@@ -218,7 +222,8 @@ export default defineComponent({
       habSociais,
       habMentais,
       userData,
-      importarFicha
+      importarFicha,
+      getDisciplines
     }
   }
 })

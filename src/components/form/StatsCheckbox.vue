@@ -33,7 +33,7 @@
         class="stats-checkbox"
         label=""
         dense
-        :disable="index > checkedCount + 1 || index < checkedCount"
+        :disable="index > checkedCount + 1 || index < checkedCount || disable"
         @update:model-value="updateCheckedCount"
       />
     </div>
@@ -65,7 +65,8 @@ export default {
     topLabel: {
       type: Boolean,
       default: false
-    }
+    },
+    disable: Boolean,
   },
 
   emits: ['update:modelValue'],

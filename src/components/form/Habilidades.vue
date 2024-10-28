@@ -5,6 +5,7 @@
         v-model="form.armas_brancas"
         label="Armas Brancas"
         tooltip="Manipualação e conhecimento de facas, porretes, etc"
+        :disable="disable"
       >
         <q-input  
           v-if="showSpecialties"
@@ -13,6 +14,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -20,6 +22,7 @@
         v-model="form.armas_de_fogo"
         label="Armas de Fogo"
         tooltip="Manipualação e conhecimento de armas de fogo"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -28,6 +31,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -35,6 +39,7 @@
         v-model="form.atletismo"
         label="Atletismo"
         tooltip="Feitos físicos como pular e correr"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -43,6 +48,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -50,6 +56,7 @@
         v-model="form.briga"
         label="Briga"
         tooltip="Habilidade de porradaria e força bruta"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -58,6 +65,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -65,6 +73,7 @@
         v-model="form.conducao"
         label="Condução"
         tooltip="Conhecimentos e habilidades automobilistica"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -73,6 +82,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -80,6 +90,7 @@
         v-model="form.furtividade"
         label="Furtividade"
         tooltip="A capacidade de fazer coisas sem ser notado"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -88,6 +99,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -95,6 +107,7 @@
         v-model="form.ladroagem"
         label="Ladroagem"
         tooltip="Habilidade com fechaduras e furtos"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -103,6 +116,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -110,6 +124,7 @@
         v-model="form.oficios"
         label="Ofícios"
         tooltip="Capacidade de criar ou reparar coisas"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -118,6 +133,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -125,6 +141,7 @@
         v-model="form.sobrevivencia"
         label="Sobrevivência"
         tooltip="Capacidade de sobreviver em locais especificos como na selva ou lixo"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -132,7 +149,8 @@
           dense
           filled
           label=""
-          square
+          square0
+          :disable="disable"
         />
       </StatsCheckbox>
     </div>
@@ -142,6 +160,7 @@
         v-model="form.empatia_com_animais"
         label="Empatia com Animais"
         tooltip="Quão bem se da com animais ou animal especifico"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -150,6 +169,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -157,6 +177,7 @@
         v-model="form.etiqueta"
         label="Etiqueta"
         tooltip="Quão bem se comporta na alta sociedade e comportamento de elegância"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -165,6 +186,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -172,6 +194,7 @@
         v-model="form.intimidacao"
         label="Intimidação"
         tooltip="Habilidade de adquirir o que quer com ameaças suitis ou diretas"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -180,6 +203,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -187,6 +211,7 @@
         v-model="form.lideranca"
         label="Liderança"
         tooltip="A capacidade de comandar grupos e inspirar aliados"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -195,6 +220,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -202,6 +228,7 @@
         v-model="form.manha"
         label="Manha"
         tooltip="Compreender os meandros do crime e ruas"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -210,6 +237,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -217,6 +245,7 @@
         v-model="form.performance"
         label="Performance"
         tooltip="A habilidade de atuar, dançar e outras artes do tipo"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -225,6 +254,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -232,6 +262,7 @@
         v-model="form.persuasao"
         label="Persuasão"
         tooltip="A habilidade convencer os outros, lábia e oratória"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -240,6 +271,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -247,6 +279,7 @@
         v-model="form.sagacidade"
         label="Sagacidade"
         tooltip="A capacidade de ler as pessoas e suas intenções"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -255,6 +288,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -262,6 +296,7 @@
         v-model="form.subterfugio"
         label="Subterfúgio"
         tooltip="Enganar os outros para conseguir o que quer"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -270,6 +305,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
     </div>
@@ -279,6 +315,7 @@
         v-model="form.ciencia"
         label="Ciência"
         tooltip="Conhecimento e teoria do mundo físico"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -287,6 +324,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -294,6 +332,7 @@
         v-model="form.erudicao"
         label="Erudição"
         tooltip="Conhecimentos em artes liberais (sociologia, filosofia, etc), aprender por livros"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -302,6 +341,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -309,6 +349,7 @@
         v-model="form.financas"
         label="Finanças"
         tooltip="A capacidade de gastar e conseguir dinheiro com eficiencia"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -317,6 +358,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -324,6 +366,7 @@
         v-model="form.investigacao"
         label="Investigação"
         tooltip="Seguir e adquirir pistas, resolver mistérios"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -332,6 +375,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -339,6 +383,7 @@
         v-model="form.medicina"
         label="Medicina"
         tooltip="Conhecimentos e prática medicinal como identificar e tratar ferimentos e doenças"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -347,6 +392,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -354,6 +400,7 @@
         v-model="form.ocultismo"
         label="Ocultismo"
         tooltip="Conhecimento secreto, do real e irreal como magias e cultos"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -362,6 +409,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -369,6 +417,7 @@
         v-model="form.percepcao"
         label="Percepção"
         tooltip="A atençào à detalhes no mundo e notar coisas parriam por despercebido"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -377,6 +426,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
 
@@ -384,6 +434,7 @@
         v-model="form.politica"
         label="Política"
         tooltip="A habiliade de conduzir política, fazer compromissos e promessas sociais"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -392,6 +443,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
         
@@ -399,6 +451,7 @@
         v-model="form.tecnologia"
         label="Tecnologia"
         tooltip="A capacidade de utilizar computadores, smartphones e outras tecnologias modernas"
+        :disable="disable"
       >
         <q-input
           v-if="showSpecialties"
@@ -407,6 +460,7 @@
           filled
           label=""
           square
+          :disable="disable"
         />
       </StatsCheckbox>
     </div>
@@ -433,7 +487,8 @@ export default defineComponent({
       required: true
     },
 
-    showSpecialties: Boolean
+    showSpecialties: Boolean,
+    disable: Boolean,
   },
   
   emits: ['update:modelValue', 'update:especialidades'],
