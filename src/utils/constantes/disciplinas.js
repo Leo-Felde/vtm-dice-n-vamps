@@ -57,7 +57,7 @@ export const disciplinePowers = {
       label: 'Ocultamento',
       value: 'ocultamento',
       level: 4,
-      secondaryDiscipline: 'auspicios-3',
+      requiredDiscipline: 'auspicios-3',
       rouseCheck: true,
       desc: 'Oculta um objeto inanimado',
       longDesc: 'Pode ocultar por uma noite (+1 noite para cada sucesso adicional) qualquer objeto inanimado. O feitiço quebra se o objeto for movido muito rápido ou longe de seu local original.'
@@ -88,18 +88,81 @@ export const disciplinePowers = {
       longDesc: 'Pode assumir a aparência de um humano de qualquer gênero, cor ou tamanho. Deve ser uma pessoa real que precisa ser estudada anteriormente.'
     }
   ],
-  // animalismo: [
-  //   {
-  //     label: 'Comando de Feras',
-  //     value: 'comando_de_feras',
-  //     level: 1,
-  //     rouseCheck: false,
-  //     skillOrAttr: 'carisma+lideranca',
-  //     desc: 'Controla animais para obedecerem ao usuário.',
-  //     longDesc: 'O usuário pode controlar animais ao seu redor, comandando-os a realizar tarefas simples ou agir de forma protetiva em seu nome.'
-  //   },
-  //   // Demais poderes de Animalismo...
-  // ],
+  animalismo: [
+    {
+      label: 'Vínculo Familiar',
+      value: 'vinculo_familiar',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Permite criar um vínculo mental com um animal',
+      longDesc: 'Estabelece um vínculo profundo com um animal, que o seguirá fielmente e atenderá a comandos.'
+    },
+    {
+      label: 'Sentir a Besta',
+      value: 'sentir_a_besta',
+      level: 1,
+      rouseCheck: true,
+      desc: 'Pode sentir a Besta em outras criaturas.',
+      longDesc: 'Ppermite sentir o estado emocional e o nível de ameaça de outras criaturas ao seu redor, especialmente de outros vampiros.'
+    },
+    {
+      label: 'Sussurros Selvagens',
+      value: 'sussurros_selvagens',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Pode se comunicar com animais',
+      longDesc: 'O pode se comunicar com animais por meio de sussurros e gestos.'
+    },
+    {
+      label: 'Suculência Animal',
+      value: 'suculencia_animal',
+      level: 3,
+      rouseCheck: false,
+      desc: 'Se alimenta de animais com mais eficiencia',
+      longDesc: 'Se alimentar de animais satisfaz satisfaz mais a fome.'
+    },
+    {
+      label: 'Acalmar a Besta',
+      value: 'acalmar_a_besta',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Pode acalmar a fúria interior de outros',
+      longDesc: 'Mantendo contato visual é possível acalmar humanos e vampiros. Humanos ficam letargicos e vampiros não podem tirar críticos/falhas bestiais nem usar Surto de Sangue.'
+    },
+    {
+      label: 'Colméia Não-Viva',
+      value: 'colmeia_nao_viva',
+      level: 3,
+      rouseCheck: true,
+      requiredDiscipline: 'ofuscacao-2',
+      desc: 'O vampiro é rodeado e protegido por um enxame de insetos',
+      longDesc: 'Permite ao vampiro conjurar um enxame de pequenas criaturas mortas-vivas, como insetos, que o defendem de ameaças.'
+    },
+    {
+      label: 'Dominar o Espírito',
+      value: 'dominar_o_espirito',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Assumir o controle total de um animal',
+      longDesc: 'Pode tomar posse de um animal e controlar suas ações diretamente. Não requer Rouse Check para o Familiar.'
+    },
+    {
+      label: 'Domínio Animal',
+      value: 'dominio_animal',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Dominio absoluto sobre animais',
+      longDesc: 'O comando sobre as bestas é ainda mais forte, podendo comandar matilhas inteiras a darem suas vidas por um comando.'
+    },
+    {
+      label: 'Transferindo a Besta',
+      value: 'transferindo_a_besta',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Permite transferir sua Besta para outra criatura',
+      longDesc: 'Quando em frenesi ou fúria, permite transferi-la à outra pessoa.'
+    }
+  ],
   auspicios: [
     {
       label: 'Sentidos Aguçados',
@@ -162,7 +225,7 @@ export const disciplinePowers = {
       value: 'possessao',
       level: 5,
       rouseCheck: true,
-      secondaryDiscipline: 'dominacao-3',
+      requiredDiscipline: 'dominacao-3',
       desc: 'Controla completamente outro ser vivo.',
       longDesc: 'O usuário pode tomar controle completo de outro ser vivo, vendo através de seus olhos e comandando suas ações como se fosse uma marionete. A vítima perde toda a sua autonomia enquanto durar o efeito.'
     },
@@ -255,7 +318,7 @@ export const disciplinePowers = {
       value: 'demencia',
       level: 3,
       rouseCheck: true,
-      secondaryDiscipline: 'ofuscacao-2',
+      requiredDiscipline: 'ofuscacao-2',
       skillOrAttr: 'manipulacao',
       desc: 'Instaura loucura temporária em uma vítima, perturbando seus pensamentos.',
       longDesc: 'Pode causar um estado de loucura temporária na vítima, levando-a a comportamentos irracionais, delírios ou alucinações.'
@@ -314,7 +377,7 @@ export const disciplinePowers = {
       level: 1,
       rouseCheck: false,
       desc: 'Causa dano agravado à mortais',
-      longDesc: 'Ignora um nível de armadura do alvo por nível de Potência. Rasga a pele e quebra ossos de quem atacar.'
+      longDesc: 'Ignora um nível de armadura por nível de Potência. Rasga a pele e quebra ossos de mortais.'
     },
     {
       label: 'Salto Crescente',
@@ -344,7 +407,7 @@ export const disciplinePowers = {
       label: 'Fagulha de Fúria',
       value: 'fagulha_de_furia',
       level: 3,
-      secondaryDiscipline: 'presenca-2',
+      requiredDiscipline: 'presenca-2',
       rouseCheck: true,
       desc: 'Incita alvos à fúria',
       longDesc: 'Pode incitar um ou mais alvos a fúria e até frenesi.'
@@ -363,7 +426,7 @@ export const disciplinePowers = {
       level: 4,
       rouseCheck: true,
       desc: 'Concentra seu poder de Potência no sangue',
-      longDesc: 'Vampiros que bebem do seu sangue ganham metade de seu nível de Potência e seus poderes até aquele nível.'
+      longDesc: 'Vampiros que bebem seu sangue ganham metade de seu nível de Potência e os poderes até aquele nível.'
     },
     {
       label: 'Golpe da Terra',
@@ -443,7 +506,7 @@ export const disciplinePowers = {
     {
       label: 'Pele de Mármore',
       value: 'pele_de_marmore',
-      level: 4,
+      level: 5,
       rouseCheck: true,
       desc: 'Torna a pele dura como pedra',
       longDesc: 'Endurece sua pele ao ponto de torná-la quase inquebrável, semelhante ao mármore.'

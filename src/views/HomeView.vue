@@ -3,18 +3,37 @@
     <section class="q-my-auto text-center">
       Olá, bem vindo ao dice-n-vamps aqui você pode importar seus dados ou criar um novo vampiro e fazer rolagens de forma fácil e intuitiva.
       <div>
-        <q-btn
-          flat
-          to="/criar"
-        >
-          Criar vampiro
-        </q-btn>
-        <q-btn
-          flat
-          @click="importarFicha"
-        >
-          Importar vampiro
-        </q-btn>
+        <div v-if="!userData.name">
+          <q-btn
+            flat
+            to="/criar"
+          >
+            Criar novo vampiro
+          </q-btn>
+          ou
+          <q-btn
+            flat
+            @click="importarFicha"
+          >
+            Importar vampiro
+          </q-btn>
+        </div>
+        <div v-else>
+          <q-btn
+            flat
+            to="/ficha"
+          >
+            Abrir ficha
+          </q-btn>
+          <q-btn
+            class="q-ml-lg"
+            flat
+            @click="apagarVampiro"
+          >
+            apagar vampiro
+          </q-btn>
+        </div>
+
         <q-btn
           flat
           to="/rolar"
@@ -35,6 +54,7 @@
 <script>
 import { useUserStore } from '@/store/user'
 import { useQuasar } from 'quasar'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 
@@ -48,6 +68,8 @@ export default {
     const $q = useQuasar()
     const userStore = useUserStore()
     const router = useRouter()
+
+    const userData = computed(() => userStore.userData)
 
     const importarFicha = async () => {
       const success = await userStore.importJson()
@@ -65,8 +87,34 @@ export default {
       }
     }
 
+    const apagarVampiro = async () => {
+      $q.dialog({
+        title: 'Apagar vampiro',
+        message: 'Deseja apagar todos os dados do vampiro atual? Isso não poderá ser revertido sem importar o arquivo .json',
+        persistent: true,
+        cancel: {
+          color: 'primary',
+          label: 'Apagar',
+          flat: true,
+        },
+        ok: {
+          color: 'primary',
+          label: 'Cancelar'
+        },
+      }).onOk(() => false).onCancel(() => {
+        userStore.clearUserData()
+
+        $q.notify({
+          message: 'Vampiro apagado!',
+          color: 'primary'
+        })
+      })
+    }
+
     return {
-      importarFicha
+      userData,
+      importarFicha,
+      apagarVampiro
     }
   }
 }

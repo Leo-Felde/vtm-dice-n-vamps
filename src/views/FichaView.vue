@@ -64,6 +64,7 @@ import { useUserStore } from '../store/user'
 
 import FormCompleto from '../components/form/Completo.vue'
 import { useQuasar } from 'quasar'
+import { isEqual } from 'lodash-es'
 
 export default defineComponent({
   name: 'FichaCompletaView',
@@ -87,7 +88,7 @@ export default defineComponent({
     const userData = computed(() =>  userStore.userData)
 
     const alteracoesPendentes = computed(() => {
-      return JSON.stringify(userData.value) !== JSON.stringify(formAtual.value) 
+      return !isEqual(userData.value, formAtual.value) 
     })
 
     const salvar = async () => {
@@ -172,7 +173,8 @@ export default defineComponent({
 
 <style lang="sass" scoped>
 .card-ficha
-  width: fit-content !important
+  max-width: 1260px !important
+  width: fit-content
   height: fit-content
   margin-left: auto
   margin-right: auto

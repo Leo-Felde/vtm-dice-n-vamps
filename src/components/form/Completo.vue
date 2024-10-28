@@ -185,6 +185,29 @@
         show-specialties=""
       />
     </div>
+
+    <div
+      id="disciplines"
+      class="q-mt-lg"
+    >
+      <h5 class="text-center q-ma-none">
+        Disciplinas
+      </h5>
+      <q-separator class="q-mt-sm q-mb-md" />
+      <div class="row">
+        <div
+          v-for="discipline in getDisciplines()"
+          :key="`form-disci-${discipline}`"
+          class="col-4"
+        >
+          <FormDisciplina
+            v-model="form.disciplines[discipline]"
+            :disciplina="discipline"
+            :locked-powers="getAccquiredPowers(discipline)"
+          />
+        </div>
+      </div>
+    </div>
   </q-form>
 </template>
 
@@ -197,6 +220,8 @@ import { rules } from '../../utils/validationRules'
 import FormAtributos from './Atributos.vue'
 import FormHabilidades from './Habilidades.vue'
 import StatsCheckbox from './StatsCheckbox.vue'
+import FormDisciplina from './Disciplina.vue'
+import { cloneDeep } from 'lodash-es'
 
 export default {
   name: 'CharacterForm',
@@ -204,7 +229,8 @@ export default {
   components: {
     FormAtributos,
     FormHabilidades,
-    StatsCheckbox
+    StatsCheckbox,
+    FormDisciplina
   },
 
   props: {
@@ -219,20 +245,35 @@ export default {
   setup(props, { emit }) {
     const formRef = ref(null)
 
-    const form = ref({ ...props.modelValue })
+    const form = ref(cloneDeep(props.modelValue))
 
     watch(form, (newVal) => {
       emit('update:modelValue', newVal)
     },
     { deep: true })
 
-    async function validate  () {
+    const getDisciplines = () => {
+      const clanDisciplines = clanOptions.filter(clan => clan.value === form.value.clan)[0].disciplines
+      const userDisciplines = form.value.disciplines ? Object.keys(form.value.disciplines) : []
+
+      const disciplines = [...new Set([...clanDisciplines, ...userDisciplines])]
+
+      return disciplines || []
+    }
+
+    const getAccquiredPowers = (discipline) => {
+      const disciplines = form.value?.disciplines[discipline]
+
+      return disciplines?.powers || []
+    }
+
+    const validate  = async () => {
       const success = await formRef.value.validate()
       return success
     }
 
-    function reset (toValue) {
-      Object.assign(form.value, toValue) 
+    const reset = (toValue) => {
+      form.value = cloneDeep(toValue)
     }
 
     return {
@@ -243,7 +284,9 @@ export default {
       ageOptions,
       clanOptions,
       validate,
-      reset
+      reset,
+      getDisciplines,
+      getAccquiredPowers
     }
   }
 }

@@ -1,6 +1,6 @@
 import HomeView from '../views/HomeView.vue'
 import CriarView from '../views/CriarView.vue'
-// import DebugView from '../views/DebugView.vue'
+import DebugView from '../views/DebugView.vue'
 import RolarView from '../views/RolagemView.vue'
 import AboutView from '../views/AboutView.vue'
 import FichaView from '@/views/FichaView.vue'
@@ -21,11 +21,11 @@ export const routes = [
     name: 'Ficha',
     component: FichaView
   },
-  // {
-  //   path: '/debug',
-  //   name: 'Debugger',
-  //   component: DebugView
-  // },
+  {
+    path: '/debug',
+    name: 'Debugger',
+    component: DebugView
+  },
   {
     path: '/rolar',
     name: 'RolarDados',

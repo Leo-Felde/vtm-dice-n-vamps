@@ -18,7 +18,11 @@
         :done="currentStep > step.name"
       >
         <div class="q-pa-md">
-          step {{ index }}
+          <component
+            :is="step.component"
+            v-if="step.component"
+          />
+          <span v-else> step {{ index }} </span>
         </div>
 
         <div>
@@ -46,16 +50,19 @@
 <script>
 import { ref } from 'vue'
 
+import FormClanIntuitivo from '@/components/form/intuitivo/Clan.vue'
+
 export default {
 
   components: {
+    FormClanIntuitivo
   },
 
   setup () {
     const currentStep = ref(1)
 
     const steps = ref([
-      { name: 1, title: 'Clã' },
+      { name: 1, title: 'Clã', component: 'FormClanIntuitivo' },
       { name: 2, title: 'Nome' },
       { name: 3, title: 'Geração' },
       { name: 4, title: 'Tipo de predador' },

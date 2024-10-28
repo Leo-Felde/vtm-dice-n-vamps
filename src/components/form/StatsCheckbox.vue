@@ -4,6 +4,7 @@
     :class="topLabel ? 'flex-column' : 'd-flex justify-space-between'"
   >
     <label
+      v-show="label"
       class="q-mr-smo stats-label"
       :class="topLabel ? 'q-mx-auto' : 'q-my-auto'"
     >
@@ -51,7 +52,7 @@ export default {
     },
     label: {
       type: String,
-      default: 'Label'
+      default: null
     },
     tooltip: {
       type: String,
@@ -85,7 +86,7 @@ export default {
     })
 
     const updateCheckedCount = () => {
-      const count = checkboxes.value.filter(Boolean).length
+      const count = checkboxes.value.filter(Boolean).length || 0
       emit('update:modelValue', count)
     }
 

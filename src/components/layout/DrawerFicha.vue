@@ -36,6 +36,9 @@
               {{ userData.clan }} - Geração {{ ageOptions.filter(age => age.value === userData.generation)[0].label }}
             </q-item-label>
           </q-item-section>
+          <q-tooltip :delay="500">
+            Abrir ficha
+          </q-tooltip>
         </q-item>
         <label class="text-h6 q-ml-md">
           Atributos
@@ -119,15 +122,16 @@
         >
           Disciplinas
         </label>
-        <q-item v-if="userData.disciplines">
-          <q-item-section
+        <div class="row q-col-gutter-sm">
+          <div
             v-for="disciplina in Object.keys(userData.disciplines)"
             :key="`dados-disciplina-${disciplina}`"
+            class="col-6 flex-column"
             style="justify-content: start;"
           >
-            <q-item-label class="">
-              {{ disciplineOptions.filter(disc => disc.value === disciplina)[0].label }}: lvl {{ userData.disciplines[disciplina].level }}
-            </q-item-label>
+            <label class="">
+              {{ disciplineOptions.filter(disc => disc.value === disciplina)[0].label }} {{ userData.disciplines[disciplina].level }}
+            </label>
             <span
               v-for="power in userData.disciplines[disciplina]?.powers"
               :key="`${disciplina}-${power}`"
@@ -142,8 +146,8 @@
                 {{ disciplinePowers[disciplina].filter(pow => pow.value === power)[0].longDesc }}
               </q-tooltip>
             </span>
-          </q-item-section>
-        </q-item>     
+          </div>
+        </div>     
       </q-list>
     </q-scroll-area>
   </q-drawer>
