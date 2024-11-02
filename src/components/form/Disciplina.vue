@@ -14,7 +14,10 @@
       </q-item-section>
 
       <q-item-section side>
-        <StatsCheckbox v-model="form.level" />
+        <StatsCheckbox
+          v-model="form.level"
+          :minimum-value="originalLvl"
+        />
       </q-item-section>
     </template>
     <div class="row q-gutter-md d-flex">
@@ -44,13 +47,25 @@
           class="q-mt-auto d-flex"
         >
           <q-btn
+            v-if="!userHasPower(poder.value)"
             color="primary"
             flat
             outline
             class="q-ml-auto"
-            :disable="!canAquire"
+            :disable="!canAquire || poder.level > form.level"
+            @click="addPower(poder.value)"
           >
             Adquirir
+          </q-btn>
+          <q-btn
+            v-else
+            color="primary"
+            flat
+            outline
+            class="q-ml-auto"
+            @click="removePower(poder.value)"
+          >
+            Remover
           </q-btn>
         </div>
       </q-card>
@@ -59,7 +74,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, toRaw, watch } from 'vue'
+import { computed, defineComponent, onMounted, ref, toRaw, watch } from 'vue'
 
 import { disciplineOptions, disciplinePowers } from '@/utils/constantes/disciplinas'
 
@@ -91,11 +106,16 @@ export default defineComponent({
 
   emits: ['update:modelValue'],
   setup (props, { emit }) {
+    const originalLvl = ref(0)
     const form = ref({ ...props.modelValue })
 
     const getDisciplineIcon = () => {
       return require(`@/assets/img/disciplinas/${props.disciplina || 'ofuscacao'}.png`)
     }
+
+    onMounted(() => {
+      originalLvl.value = props.modelValue.level
+    })
 
     watch(form.value, (newVal) => {
       emit('update:modelValue', newVal)
@@ -108,16 +128,36 @@ export default defineComponent({
       }
     }, { deep: true })
 
-    const canAquire = computed(() => form.value.level < form.value.powers?.length)
-
+    const aqquiredPowers = computed(() => form.value.powers?.length || 0)
+    const canAquire = computed(() => form.value.level > aqquiredPowers.value)
     const disciplinaSelecionada = computed(() => disciplineOptions.filter(disciplina => disciplina.value === props.disciplina)[0])
 
+    const addPower = (power) => {
+      form.value.powers.push(power)
+    }
+
+    const removePower = (power) => {
+      const powerIndex = form.value.powers.indexOf(power)
+      if (powerIndex < 0) return
+
+      form.value.powers.splice(powerIndex, 1)
+    }
+
+    const userHasPower = (power) => {
+      return form.value.powers.includes(power)
+    }
+
     return {
+      originalLvl,
       form,
       disciplinaSelecionada,
       disciplinePowers,
+      aqquiredPowers,
       canAquire,
-      getDisciplineIcon
+      getDisciplineIcon,
+      addPower,
+      removePower,
+      userHasPower
     }
   }
 })

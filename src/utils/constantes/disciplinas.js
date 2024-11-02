@@ -404,7 +404,7 @@ export const disciplinePowers = {
       level: 1,
       rouseCheck: false,
       desc: 'Apaga ou altera memórias recentes.',
-      longDesc: 'Nenhum teste é necessário contra uma vítima mortal despreparada. Uma vítima resistente ou outro vampiro requer um teste de Carisma + Dominação vs Raciocínio + Perseverança.'
+      longDesc: 'Apaga ou altera memórias recentes. Uma vítima resistente ou outro vampiro requer um teste de Carisma + Dominação.'
     },
     {
       label: 'Compelir',

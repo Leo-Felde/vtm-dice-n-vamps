@@ -33,7 +33,7 @@
         class="stats-checkbox"
         label=""
         dense
-        :disable="index > checkedCount + 1 || index < checkedCount || disable"
+        :disable="index > checkedCount + 1 || index < checkedCount || disable || index <= minimumValue"
         @update:model-value="updateCheckedCount"
       />
     </div>
@@ -65,6 +65,10 @@ export default {
     topLabel: {
       type: Boolean,
       default: false
+    },
+    minimumValue: {
+      type: Number,
+      default: 0
     },
     disable: Boolean,
   },
