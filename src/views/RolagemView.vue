@@ -109,6 +109,7 @@
           :dies="dies"
           :hunger="hunger"
           :difficulty="difficulty"
+          @rollCounted="sendRollToDiscord"
         />
       </q-card>
     </div>
@@ -198,6 +199,37 @@ export default defineComponent({
       handleStats()
     }
 
+    const sendRollToDiscord = async (rollData) => {
+
+      let formatedData
+      if (difficulty.value) {
+        const result = `${difficulty.value > rollData.successes
+          ? rollData.beastFail ? 'teve uma **Falha Bestial**' : '**falhou**'
+          : rollData.criticals > 0 ? rollData.messyCrit ? 'obteve um **Crítico Bagunçado**' : 'teve um **Sucesos Crítico**' : '**passou**'}`
+
+        formatedData = `${userData.value.name}: ${result} num teste de **dificuldade ${difficulty.value}**`
+      } else {
+        const criticalCount = `${rollData.criticals > 0 ? `${rollData.criticals} Critico${rollData.criticals === 1 ? '' : 's'}` : ''}`
+
+        formatedData = `${userData.value.name}: **${rollData.successes} sucesso${rollData.successes === 1 ? '' : 's'}** ${rollData.criticals > 0 ? rollData.messyCrit ? `e **Crítico Bagunçado** (${criticalCount})` : `e **${criticalCount}**` : rollData.beastFail ? 'com possível **Falha Bestial**' : ''}`
+      }
+
+      try {
+        if (!validUserData) return
+        
+        await fetch('http://localhost:3000/roll', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ formatedData }),
+        })
+      } catch (error) {
+        console.error('Error sending roll to Discord:', error)
+      }
+    
+    }
+
     return {
       userData,
       validUserData,
@@ -213,7 +245,8 @@ export default defineComponent({
       filterAtributo,
       filterHabilidade,
       handleStats,
-      selecionarCominacao
+      selecionarCominacao,
+      sendRollToDiscord
     }
   }
 })

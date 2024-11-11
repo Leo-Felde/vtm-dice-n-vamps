@@ -15,7 +15,7 @@
         class="q-ml-md q-mt-md q-mb-sm d-flex"
       >
         <h5 class="q-ma-none">
-          {{ `${successes} Sucesso${successes > 1 ? 's' : ''}` }}
+          {{ `${successes} Sucesso${successes === 1 ? '' : 's'}` }}
         </h5>
         <h6
           v-show="messyCrit"
@@ -27,10 +27,10 @@
           v-show="!messyCrit && criticals > 0"
           class="q-ml-md q-my-auto"
         >
-          | {{ `${criticals} Crítico${criticals > 1 ? 's' : ''}` }}
+          | {{ `${criticals} Crítico${criticals === 1 ? '' : 's'}` }}
         </h6>
         <h6
-          v-show="bestFail"
+          v-show="beastFail"
           class="text-accent q-ml-md q-my-auto"
         >
           | Falha bestial
@@ -40,9 +40,9 @@
       <h5
         v-show="!!difficulty"
         class="q-ml-md q-mt-md q-mb-sm"
-        :class="{'text-accent' : messyCrit || (successes < difficulty && bestFail)}"
+        :class="{'text-accent' : messyCrit || (successes < difficulty && beastFail)}"
       >
-        {{ successes >= difficulty ? messyCrit ? 'Crítico bagunçado' : cleanCrit ? 'Sucesso Crítico' : 'Sucesso' : bestFail ? 'Falha bestial' : 'Falhou' }}
+        {{ difficultyRollText }}
       </h5>
       <div
         class="d-flex"
@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export default{
   name: 'DiceRoller',
@@ -116,7 +116,7 @@ export default{
     }
   },
 
-  setup (props) {
+  setup (props, { emit }) {
     const rolled = ref(false)
     const reRolling = ref(false)
 
@@ -129,7 +129,11 @@ export default{
 
     const messyCrit = ref(false)
     const cleanCrit = ref(false)
-    const bestFail = ref(false)
+    const beastFail = ref(false)
+
+    const difficultyRollText = computed(() => {
+      return successes.value >= props.difficulty ? messyCrit.value ? 'Crítico bagunçado' : cleanCrit.value ? 'Sucesso Crítico' : 'Sucesso' : beastFail.value ? 'Falha bestial' : 'Falhou'
+    })
 
     const rollDice = () => {
       if (!props.dies) return
@@ -138,7 +142,7 @@ export default{
       hungerResults.value = []
       criticals.value = 0
       messyCrit.value = false
-      bestFail.value = false
+      beastFail.value = false
       clearRerollPoll()
 
       if (props.hunger < props.dies) {
@@ -177,8 +181,22 @@ export default{
 
 
       if (successes.value <= 3) {
-        bestFail.value = hungerResults.value.includes('bestial-fail')
+        beastFail.value = hungerResults.value.includes('bestial-fail')
       }
+
+      emitRoll()
+    }
+
+    const emitRoll = () => {
+      const data = {
+        successes: successes.value,
+        criticals: criticals.value,
+        messyCrit: messyCrit.value,
+        cleanCrit: cleanCrit.value,
+        beastFail: beastFail.value
+      }
+
+      emit('rollCounted', data)
     }
     
     const toggleReroll = (index) => {
@@ -193,7 +211,7 @@ export default{
     
     const reRoll = () => {
       messyCrit.value = false
-      bestFail.value = false
+      beastFail.value = false
       
       if (reRollPoll.value.length > 0) {
         reRollPoll.value.forEach(rollIndex => {
@@ -241,7 +259,8 @@ export default{
       criticals,
       messyCrit,
       cleanCrit,
-      bestFail,
+      beastFail,
+      difficultyRollText,
       rollDice,
       toggleReroll,
       reRoll,

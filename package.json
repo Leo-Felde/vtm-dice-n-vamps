@@ -10,6 +10,10 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
     "lodash-es": "^4.17.21",
     "pdfjs-dist": "^4.7.76",
     "pinia": "^2.1.4",
