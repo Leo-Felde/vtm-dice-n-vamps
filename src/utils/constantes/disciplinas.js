@@ -10,6 +10,7 @@ export const disciplineOptions = [
   { label: 'Ofuscação', value: 'ofuscacao', desc: 'Invisilidade nas sombras e ilusões.' },
   { label: 'Potência', value: 'potencia', desc: 'Força sobre-humana, permitindo feitos físicos extraordinários.' },
   { label: 'Rapidez', value: 'rapidez', desc: 'Velocidade sobrenatural, mais rápido do que os olhos humanos e de muitos Membros pode acompanhar.' },
+  { label: 'Abismo', value: 'abismo', desc: 'Conexão com o vazio primordial, capaz de invocar sombras vivas, manipular escuridão e explorar os segredos do nada absoluto.'}
 ]
 
 export const disciplinePowers = {
@@ -404,7 +405,7 @@ export const disciplinePowers = {
       level: 1,
       rouseCheck: false,
       desc: 'Apaga ou altera memórias recentes.',
-      longDesc: 'Nenhum teste é necessário contra uma vítima mortal despreparada. Uma vítima resistente ou outro vampiro requer um teste de Carisma + Dominação vs Raciocínio + Perseverança.'
+      longDesc: 'Apaga ou altera memórias recentes. Uma vítima resistente ou outro vampiro requer um teste de Carisma + Dominação.'
     },
     {
       label: 'Compelir',
@@ -687,6 +688,88 @@ export const disciplinePowers = {
       rouseCheck: true,
       desc: 'Faz o sangue de uma vítima ferver',
       longDesc: 'Faz o sangue de um alvo ferver, pode causar dano extremos ou destruir a vítima dependendo de quanto sangue for afetado.'
+    }
+  ],
+  abismo: [
+    {
+      label: 'Olhos da Escuridão',
+      value: 'olhos_da_escuridao',
+      level: 1,
+      rouseCheck: false,
+      desc: 'Permite ver no escuro',
+      longDesc: 'Capaz de enxergar perfeitamente em áreas completamente escuras, sem necessitar de qualquer fonte de luz.'
+    },
+    {
+      label: 'Chamado da Sombra',
+      value: 'chamado_da_sombra',
+      level: 1,
+      rouseCheck: true,
+      desc: 'Manipula as sombras',
+      longDesc: 'Consegue manipular as sombras para realizar pequenas ações como fechar uma porta ou expandir as sombras deixando o ambiente mais escuro.'
+    },
+    {
+      label: 'Toque do Abismo',
+      value: 'toque_do_abismo',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Pode envolver pessoas ou objetos com as sombras',
+      longDesc: 'Pode cubrir um alvo com as sombras. Pode amedontrar uma pessoa ou dificultar sua visão bem como esconder objetos no escudo como se não estivessem lá.'
+    },
+    {
+      label: 'Garras do Vazio',
+      value: 'garras_do_vazio',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Convoca garras feitas de pura escuridão',
+      longDesc: 'Consegue evocar garras compostas de sombras que se projetam de suas mãos. Essas garras causam ferimentos profundos e podem cortar materiais sólidos com facilidade.'
+    },
+    {
+      label: 'Controle das sombras',
+      value: 'controle_das_sombras',
+      level: 2,
+      rouseCheck: true,
+      desc: 'Manipula as sombras com mais controle',
+      longDesc: 'Capaz de manipular as sombras com mais precisão pode utiliza-las para cobrir pessoas ou objetos quase completamente, pode também usa-las para ações mais complexas como amortecer sua queda.'
+    },
+    {
+      label: 'Sussurros das Trevas',
+      value: 'sussurros_das_trevas',
+      level: 3,
+      rouseCheck: true,
+      desc: 'Permite ouvir ou comunicar-se com vozes do Abismo',
+      longDesc: 'Capaz de ouvir e se comunicar com as entidades do Abismo, recebendo informações ou revelando segredos sobre o alvo ou local. As vozes nem sempre respondem claramente ou com a verdade.'
+    },
+    {
+      label: 'Manto das Sombras',
+      value: 'manto_das_sombras',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Encobre-se de uma proteção sombril',
+      longDesc: 'Envolve-se em uma armadura de pura escuridão, tornando-se difícil de ver e mais resistente a danos.'
+    },
+    {
+      label: 'Portais do Vazio',
+      value: 'portais_do_vazio',
+      level: 4,
+      rouseCheck: true,
+      desc: 'Permite criar pequenos portais sombrios para teletransporte',
+      longDesc: 'Abrindo uma porta ao Abismo pode se movimentar entre as sombras como se teletransportasse. Ficar muito tempo no Abismo pode ser perigoso.'
+    },
+    {
+      label: 'Convocar o Abismo',
+      value: 'convocar_o_abismo',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Convoca uma entidade do Abismo para realizar sua vontade',
+      longDesc: 'Invoca uma entidade do Abismo, que atua conforme suas instruções.'
+    },
+    {
+      label: 'Absorver a Escuridão',
+      value: 'absorver_a_escuridao',
+      level: 5,
+      rouseCheck: true,
+      desc: 'Absorve as sombras e escuridão ao redor, tornando-se mais forte',
+      longDesc: 'Absorve sombras do ambiente, fortalecendo-se temporariamente e ganhando um aumento em sua resistência.'
     }
   ]
 }

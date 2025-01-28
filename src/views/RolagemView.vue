@@ -51,14 +51,6 @@
           />
         </div>
       </q-card>
-      <q-card
-        v-else
-        id="noDataHint"
-        flat
-        bordered
-      >
-        Crie ou importe um vampiro para utilizar seus atributos e habilidades
-      </q-card>
 
       <q-card
         class="flex-column roll-card"
@@ -73,6 +65,7 @@
             label="Dados"
             type="number"
             min="1"
+            max="99"
             stack-label
             filled
             dense
@@ -85,6 +78,7 @@
             label="Fome"
             type="number"
             min="0"
+            max="5"
             stack-label
             filled
             dense
@@ -97,6 +91,7 @@
             label="Dificuldade"
             type="number"
             min="0"
+            max="99"
             stack-label
             filled
             dense

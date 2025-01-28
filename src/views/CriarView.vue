@@ -21,11 +21,13 @@
           <component
             :is="step.component"
             v-if="step.component"
+            v-model="form[step.value]"
           />
           <span v-else> step {{ index }} </span>
         </div>
-
-        <div>
+      </q-step>
+      <template #navigation>
+        <q-stepper-navigation>
           <q-btn
             v-show="currentStep > 1"
             flat
@@ -37,12 +39,13 @@
           <q-btn
             v-show="currentStep < 10"
             color="primary"
+            class="q-ml-auto"
             @click="move('foward')"
           >
             {{ currentStep === 9 ? 'finalizar' : 'Continuar' }}
           </q-btn>
-        </div>
-      </q-step>
+        </q-stepper-navigation>
+      </template>
     </q-stepper>
   </q-page>
 </template>
@@ -60,17 +63,18 @@ export default {
 
   setup () {
     const currentStep = ref(1)
+    const form = ref({ clan: null, userData: {}, geracao: null, predator: null})
 
     const steps = ref([
-      { name: 1, title: 'Clã', component: 'FormClanIntuitivo' },
-      { name: 2, title: 'Nome' },
-      { name: 3, title: 'Geração' },
-      { name: 4, title: 'Tipo de predador' },
-      { name: 5, title: 'Atributos' },
-      { name: 6, title: 'Habilidades' },
-      { name: 7, title: 'Disciplinas' },
-      { name: 8, title: 'Méritos' },
-      { name: 9, title: 'Pilares' },
+      { name: 1, title: 'Clã', component: 'FormClanIntuitivo', value: 'clan' },
+      { name: 2, title: 'Nome', value: 'userData'},
+      { name: 3, title: 'Geração', generation: 'geracao' },
+      { name: 4, title: 'Tipo de predador', value: 'predator' },
+      { name: 5, title: 'Atributos', value: 'attributes' },
+      { name: 6, title: 'Habilidades', value: 'abilities'  },
+      { name: 7, title: 'Disciplinas', value: 'disciplines'  },
+      { name: 8, title: 'Méritos', value: 'merits'  },
+      { name: 9, title: 'Pilares', value: 'pillars'  },
       { name: 10, title: 'Fim' }
     ])
 
@@ -84,6 +88,7 @@ export default {
 
     return {
       currentStep,
+      form,
       steps,
       move
     }
@@ -94,5 +99,33 @@ export default {
 
 <style lang="sass" scoped>
 #criar-page
-  background-image: url(https://drawdistance.dev/wp-content/uploads/2019/12/Wallpaper_03-1920x1080.jpg)
+  background-image: url('../assets/create-bg.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+  overflow: hidden
+
+.q-stepper--flat
+  background-color: transparent
+  border: none !important
+
+::v-deep  
+  .q-stepper__header, .q-stepper__nav
+    background-color: var(--q-dark-page)
+    border: 1px solid #5a5b60
+    margin-left: auto
+    margin-right: auto
+    max-width: 80dvw
+    box-shadow: 2px 2px 5px #171717
+  .q-stepper__step
+    max-height: 75dvh
+    overflow-y: scroll
+
+.q-stepper__nav
+  padding: 15px
+  display: flex
+
+:deep(.q-stepper__step-content)
+  max-width: 1200px
+  margin-left: auto
+  margin-right: auto
 </style>

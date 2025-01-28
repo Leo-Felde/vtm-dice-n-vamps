@@ -165,6 +165,38 @@ export const predatorTypes = [
 
 export const clanOptions = [
   {
+    label: 'Lasombra',
+    value: 'lasombra',
+    desc: 'Os mestres das sombras e manipulação',
+    longDesc: 'Os La Sombra são conhecidos por sua habilidade de manipular as sombras e sua natureza calculista. Eles desafiam a ordem estabelecida e exercem influência tanto sobre a Camarilla quanto o Sabá, preferindo controlar das sombras. Muitas vezes, enxergam-se como os verdadeiros líderes da sociedade vampírica, mesmo que em um papel oculto.',
+    clanPerseption: 'Temidos e respeitados por sua crueldade e habilidade de manipulação, mas também vistos como perigosos e traiçoeiros por outros vampiros.',
+    disciplines: ['dominacao', 'potencia', 'abismo']
+  },
+  {
+    label: 'Ventrue',
+    value: 'ventrue',
+    desc: 'Os líderes e tiranos',
+    longDesc: 'Os Ventrue são os líderes naturais da sociedade vampírica. Com seu domínio sobre mortais e outros Membros, eles mantêm a ordem e se veem como os legítimos governantes da Camarilla.',
+    clanPerseption: 'Respeitados por sua liderança natural, mas podem ser vistos como arrogantes e obcecados por controle.',
+    disciplines: ['dominacao', 'fortitude', 'presenca']
+  },
+  {
+    label: 'Toreador',
+    value: 'toreador',
+    desc: 'Os artistas e belos',
+    longDesc: 'Os Toreador são Membros apaixonados por beleza e arte. Eles se misturam com a alta sociedade mortal, sempre em busca de inspiração artística e prazeres estéticos.',
+    clanPerseption: 'São admirados pela beleza e criatividade, mas também ridicularizados por sua superficialidade e apego às aparências.',
+    disciplines: ['auspicios', 'rapidez', 'presenca']
+  },
+  {
+    label: 'Nosferatu',
+    value: 'nosferatu',
+    desc: 'Os monstruosos e espiões',
+    longDesc: 'Deformados por sua maldição, os Nosferatu são Membros grotescos que vivem nas sombras. Embora evitados pela sociedade, eles controlam vastas redes de informação.',
+    clanPerseption: 'Evitados por causa de sua aparência grotesca, são respeitados como comerciantes de informações e segredos.',
+    disciplines: ['ofuscacao', 'animalismo', 'potencia']
+  },
+  {
     label: 'Brujah',
     value: 'brujah',
     desc: 'Os revolucionários e idealistas',
@@ -181,44 +213,20 @@ export const clanOptions = [
     disciplines: ['animalismo', 'fortitude', 'metamorfose']
   },
   {
+    label: 'Tremere',
+    value: 'tremere',
+    desc: 'Os feiticeiros e usurpadores',
+    longDesc: 'O clã Tremere é composto por Membros que praticam a poderosa Feitiçaria de Sangue conhecida como Taumaturgia. Embora temidos e respeitados, eles enfrentam uma luta interna pelo poder.',
+    clanPerseption: 'Temidos por sua reputação como magos e feiticeiros. Profundamente desconfiados pelos outros clãs devido à sua origem como usurpadores.',
+    disciplines: ['auspicios', 'feiticaria_de_sangue', 'dominacao']
+  },
+  {
     label: 'Malkavian',
     value: 'malkavian',
     desc: 'Os loucos e oráculos',
     longDesc: 'Pouco se sabe sobre sua loucura, muitos dizem ser uma maldição ou doença do sangue, mas é inegável que Malkavianos tendem a saber mais do que deveria ser possível.',
     clanPerseption: 'Geralmente vistos como não mais do que lunáticos irritantes que falam em charadas.',
     disciplines: ['auspicios', 'dominacao', 'ofuscacao']
-  },
-  {
-    label: 'Nosferatu',
-    value: 'nosferatu',
-    desc: 'Os monstruosos e espiões',
-    longDesc: 'Deformados por sua maldição, os Nosferatu são Membros grotescos que vivem nas sombras. Embora evitados pela sociedade, eles controlam vastas redes de informação.',
-    clanPerseption: 'Evitados por causa de sua aparência grotesca, são respeitados como comerciantes de informações e segredos.',
-    disciplines: ['ofuscacao', 'animalismo', 'potencia']
-  },
-  {
-    label: 'Toreador',
-    value: 'toreador',
-    desc: 'Os artistas e belos',
-    longDesc: 'Os Toreador são Membros apaixonados por beleza e arte. Eles se misturam com a alta sociedade mortal, sempre em busca de inspiração artística e prazeres estéticos.',
-    clanPerseption: 'São admirados pela beleza e criatividade, mas também ridicularizados por sua superficialidade e apego às aparências.',
-    disciplines: ['auspicios', 'rapidez', 'presenca']
-  },
-  {
-    label: 'Tremere',
-    value: 'tremere',
-    desc: 'Os feiticeiros',
-    longDesc: 'O clã Tremere é composto por Membros que praticam a poderosa Feitiçaria de Sangue conhecida como Taumaturgia. Embora temidos e respeitados, eles enfrentam uma luta interna pelo poder.',
-    clanPerseption: 'Temidos por sua reputação como magos e feiticeiros. Profundamente desconfiados pelos outros clãs devido à sua origem como usurpadores.',
-    disciplines: ['auspicios', 'feiticaria_de_sangue', 'dominacao']
-  },
-  {
-    label: 'Ventrue',
-    value: 'ventrue',
-    desc: 'Os líderes e nobres',
-    longDesc: 'Os Ventrue são os líderes naturais da sociedade vampírica. Com seu domínio sobre mortais e outros Membros, eles mantêm a ordem e se veem como os legítimos governantes da Camarilla.',
-    clanPerseption: 'Respeitados por sua liderança natural, mas podem ser vistos como arrogantes e obcecados por controle.',
-    disciplines: ['dominacao', 'fortitude', 'presenca']
   },
   {
     label: 'Caitiff',

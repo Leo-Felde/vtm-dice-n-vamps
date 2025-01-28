@@ -168,11 +168,14 @@ export default{
 
       if (critCount >= 2) {
         messyCrit.value = hungerCrits > 0
-        cleanCrit.value = !messyCrit.value
         criticals.value = Math.floor(critCount / 2)
-
         successCount = successCount + Math.floor(critCount / 2) * 2
+      } else {
+        criticals.value = 0
+        messyCrit.value = false
       }
+      cleanCrit.value = !messyCrit.value && criticals.value > 0
+
       successes.value = successCount
 
 

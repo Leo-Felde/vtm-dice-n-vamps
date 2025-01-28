@@ -54,6 +54,21 @@
           Baixar JSON
         </q-tooltip>
       </q-card>
+
+      <q-card
+        class="card-btn"
+        @click="limparFicha"
+      >
+        <q-icon
+          color="white"
+          name="sym_r_delete"
+          size="lg"
+        />
+
+        <q-tooltip>
+          Limpar ficha
+        </q-tooltip>
+      </q-card>
     </div>
   </q-page>
 </template>
@@ -79,7 +94,7 @@ export default defineComponent({
 
     const $q = useQuasar()
     const userStore = useUserStore()
-    const formAtual = ref({...userStore.userData})
+    const formAtual = ref({ ...userStore.userData })
 
     onMounted(() => {
       Object.assign(formAtual.value, userData.value) 
@@ -139,8 +154,16 @@ export default defineComponent({
       }
     }
 
-    const baixarJSON = () => {
-      if (!userData.value?.name || userData.value?.attributes?.length) return
+    const baixarJSON = async () => {
+      const valid = await formulario.value.validate()
+
+      if (!valid) {
+        $q.notify({
+          message: 'Finalize a ficha para baixar o JSON',
+          color: 'negative'
+        })
+        return
+      }
 
       const jsonStr = JSON.stringify(userData.value, null, 2)
     
@@ -157,6 +180,31 @@ export default defineComponent({
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
     }
+    
+    const limparFicha = async () => {
+      $q.dialog({
+        title: 'Limpar ficha',
+        message: 'Deseja apagar todos os dados da ficha atual? Isso não poderá ser revertido sem importar um arquivo .json',
+        persistent: true,
+        cancel: {
+          color: 'primary',
+          label: 'Limpar',
+          flat: true,
+        },
+        ok: {
+          color: 'primary',
+          label: 'Cancelar'
+        },
+      }).onOk(() => false).onCancel(() => {
+        userStore.clearUserData()
+        formulario.value.reset({})
+
+        $q.notify({
+          message: 'Vampiro apagado!',
+          color: 'primary'
+        })
+      })
+    }
 
     return {
       formulario,
@@ -165,7 +213,8 @@ export default defineComponent({
       descartarAlteracoes,
       alteracoesPendentes,
       importarNovamente,
-      baixarJSON
+      baixarJSON,
+      limparFicha
     }
   }
 })
