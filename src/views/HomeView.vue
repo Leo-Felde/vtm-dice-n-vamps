@@ -6,7 +6,7 @@
         <div v-if="!userData.name">
           <q-btn
             flat
-            to="/criar"
+            to="/ficha"
           >
             Criar novo vampiro
           </q-btn>
@@ -43,6 +43,7 @@
       </div>
     </section>
     <img
+      v-show="!$q.screen.width > 600"
       id="vtm-logo"
       alt="logo Vampiro a máscara"
       src="../assets/vtm-logo.png"
@@ -126,7 +127,9 @@ export default {
   display: flex
   padding-left: 25%
   padding-right: 25%
-  background-image: url(https://drawdistance.dev/wp-content/uploads/2019/12/Wallpaper_06-1920x1080.jpg)
+  background-image: url('../assets/main-bg.jpg')
+  background-repeat: no-repeat
+  background-size: cover
   section
     font-size: 1.5rem
 

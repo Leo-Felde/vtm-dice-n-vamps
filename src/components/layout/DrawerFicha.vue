@@ -11,9 +11,9 @@
       <q-btn
         flat
         class="q-mx-auto"
-        @click="importarFicha"
+        to="/ficha"
       >
-        Importar vampiro
+        Criar ou importar ficha
       </q-btn>
     </div>
     <q-scroll-area

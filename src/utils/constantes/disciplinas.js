@@ -10,6 +10,7 @@ export const disciplineOptions = [
   { label: 'Ofuscação', value: 'ofuscacao', desc: 'Invisilidade nas sombras e ilusões.' },
   { label: 'Potência', value: 'potencia', desc: 'Força sobre-humana, permitindo feitos físicos extraordinários.' },
   { label: 'Rapidez', value: 'rapidez', desc: 'Velocidade sobrenatural, mais rápido do que os olhos humanos e de muitos Membros pode acompanhar.' },
+  { label: 'Abismo', value: 'abismo', desc: 'Conexão com o vazio primordial, capaz de invocar sombras vivas, manipular escuridão e explorar os segredos do nada absoluto.'}
 ]
 
 export const disciplinePowers = {

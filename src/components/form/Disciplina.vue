@@ -52,7 +52,7 @@
             flat
             outline
             class="q-ml-auto"
-            :disable="!canAquire || poder.level > form.level"
+            :disable="poder.level > form.level"
             @click="addPower(poder.value)"
           >
             Adquirir
@@ -128,8 +128,6 @@ export default defineComponent({
       }
     }, { deep: true })
 
-    const aqquiredPowers = computed(() => form.value.powers?.length || 0)
-    const canAquire = computed(() => form.value.level > aqquiredPowers.value)
     const disciplinaSelecionada = computed(() => disciplineOptions.filter(disciplina => disciplina.value === props.disciplina)[0])
 
     const addPower = (power) => {
@@ -144,6 +142,7 @@ export default defineComponent({
     }
 
     const userHasPower = (power) => {
+      if (!form.value.powers) return false
       return form.value.powers.includes(power)
     }
 
@@ -152,8 +151,6 @@ export default defineComponent({
       form,
       disciplinaSelecionada,
       disciplinePowers,
-      aqquiredPowers,
-      canAquire,
       getDisciplineIcon,
       addPower,
       removePower,
