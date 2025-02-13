@@ -98,12 +98,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-#criar-page
-  background-image: url('../assets/create-bg.jpg')
-  background-repeat: no-repeat
-  background-size: cover
-  overflow: hidden
-
 .q-stepper--flat
   background-color: transparent
   border: none !important
